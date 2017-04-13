@@ -79,6 +79,7 @@ function recipeService($q, $log, $window, authService) {
       return $http.put(url, recipeData, config);
     })
     .then( res => {
+      $log.log('recipes updated');
       for (let i = 0; i < service.recipes.length; i++) {
         let current = serivce.recipes[i];
         if (current._id === recipeID) {
@@ -109,6 +110,7 @@ function recipeService($q, $log, $window, authService) {
       return $http.delete(url, config);
     })
     .then( res => {
+      $log.log('recipes deleted');
       for (let i = 0; i < service.recipes.length; i++) {
         let current = service.recipes[i];
         if (current._id === recipeID){
