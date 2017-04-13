@@ -8,7 +8,7 @@ function authService($q, $log, $http, $window) {
   let service = {};
   let token = null;
 
-  function setToken(_token){
+  function setToken(_token) {
     $log.debug('setToken');
 
     if(!_token) return $q.reject(new Error('no token'));
@@ -18,7 +18,7 @@ function authService($q, $log, $http, $window) {
     return $q.resolve(token);
   }
 
-  service.getToken(){
+  service.getToken = function() {
     $log.debug('authService.getToken');
 
     if(token){
@@ -27,13 +27,13 @@ function authService($q, $log, $http, $window) {
     // if still confused log dif between different token grabs
     token = $window.localStorage.getItem('token');
     if (token) return $q.resolve(token);
-    return $q.reject(new Error('token not found'))
-  }
+    return $q.reject(new Error('token not found'));
+  };
 
-  serivce.signUp = function(user) {
+  service.signUp = function(user) {
     $log.debug('authService.signUp');
 
-    let url = `${__API_URL__}/api/signup`
+    let url = `${__API_URL__}/api/signup`;
     let config = {
       headers: {
         'Content-Type': 'application/json',
@@ -50,17 +50,17 @@ function authService($q, $log, $http, $window) {
       $log.log('failure:', err.message);
       return $q.reject(err);
     });
-  }
+  };
 
   service.login = function(user) {
     $log.debug('authService.login');
 
-    let url = `${__API_URL__}/api/login`
+    let url = `${__API_URL__}/api/login`;
     let base64 = $window.btoa(`${user.username}:${user.password}`);
     let config = {
       headers: {
         Accept: 'application/json',
-        Authorization: `Basic ${base64}`;
+        Authorization: `Basic ${base64}`
       }
     };
 
@@ -73,7 +73,7 @@ function authService($q, $log, $http, $window) {
       $log.log('failure:', err.message);
       return $q.reject(err);
     });
-  }
+  };
 
   service.logout = function() {
     $log.debug('authService.logout');
@@ -81,7 +81,7 @@ function authService($q, $log, $http, $window) {
     $window.localStorage.removeItem('token');
     token = null;
     return $q.resolve();
-  }
+  };
 
   return service;
 }
