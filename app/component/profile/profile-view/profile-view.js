@@ -11,8 +11,6 @@ module.exports = {
 function ProfileViewController($log, $rootScope, profileService) {
   $log.debug('ProfileViewController');
 
-  // add things here
-
   this.profiles = [];
 
   this.fetchProfiles = function() {
@@ -34,3 +32,4 @@ function ProfileViewController($log, $rootScope, profileService) {
     this.fetchProfiles();
   });
 };
+
