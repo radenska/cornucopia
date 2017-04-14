@@ -1,6 +1,6 @@
 'use strict';
 
-module.exprots = ['$stateProvider', '$urlRouterProvider', routerConfig];
+module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('', '/join#signup');
@@ -22,7 +22,24 @@ function routerConfig($stateProvider, $urlRouterProvider) {
       template: require('../view/landing/landing.html'),
       controller: 'LandingController',
       controllerAs: 'landingCtrl'
+    },
+    {
+      name: 'signup',
+      url: '/join',
+      template: require('../view/signup/signup.html'),
+      controller: 'SignupController',
+      controllerAs: 'signupCtrl'
+    },
+    {
+      name: 'login',
+      url: '/join',
+      template: require('../view/login/login.html'),
+      controller: 'LoginController',
+      controllerAs: 'loginCtrl'
     }
   ];
-  states.forEach(state => $stateProvider.state(state));
+
+  states.forEach( state => {
+    $stateProvider.state(state);
+  });
 }
