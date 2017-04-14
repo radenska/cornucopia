@@ -30,7 +30,7 @@ function authService($q, $log, $http, $window) {
     return $q.reject(new Error('token not found'));
   };
 
-  service.signUp = function(user) {
+  service.signup = function(user) {
     $log.debug('authService.signUp');
 
     let url = `${__API_URL__}/api/signup`;

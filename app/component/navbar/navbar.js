@@ -19,7 +19,7 @@ function NavbarController($log, $location, $rootScope, authService) {
 
     authService.getToken()
     .catch( () => $location.url('/join#login'));
-  }
+  };
 
   this.checkPath();
   $rootScope.$on('$locationChangeSuccess', () => this.checkPath());
