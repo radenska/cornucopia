@@ -2,11 +2,7 @@
 
 require('./_login.scss');
 
-module.exports = {
-  template: require('./login.html'),
-  controller: ['$log', '$location', 'authService', LoginController],
-  controllerAs: 'loginCtrl'
-};
+module.exports = ['$log', '$location', 'authService', LoginController];
 
 function LoginController($log, $location, authService) {
   $log.debug('LoginController');
