@@ -3,7 +3,7 @@
 require('./_profile-view.scss');
 
 module.exports = {
-  template: require('./profile.html'),
+  template: require('./profile-view.html'),
   controller: ['$log', '$rootscope', ProfileViewController],
   controllerAs: 'profileviewCtrl'
 };
