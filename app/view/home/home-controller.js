@@ -2,9 +2,9 @@
 
 require('./_home.scss');
 
-module.exports = ['$log', '$rootScope', homeController]
+module.exports = ['$log', '$rootScope', HomeController];
 
-function homeController($log, $rootScope) {
+function HomeController($log, $rootScope) {
   $log.debug('homeController');
 
   //add more home stuff!

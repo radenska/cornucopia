@@ -2,11 +2,7 @@
 
 require('./_signup.scss');
 
-module.exports = {
-  template: require('./signup.html'),
-  controller: ['$log', '$location', 'authService', SignupController],
-  controllerAs: 'signupCtrl'
-};
+module.exports = ['$log', '$location', 'authService', SignupController];
 
 function SignupController($log, $location, authService) {
   $log.debug('SignupController');
