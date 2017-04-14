@@ -2,14 +2,14 @@
 
 module.exports = {
   template: require('./create-comment.html'),
-  controller: ['$log', 'commentService', createCommentController],
+  controller: ['$log', 'commentService', CreateCommentController],
   controllerAs: 'createCommentCtrl',
   bindings: {
     recipe: '<'
   }
 };
 
-function createCommentController($log, commentService){
+function CreateCommentController($log, commentService){
   $log.debug('createCommentController');
 
   this.comment = {};

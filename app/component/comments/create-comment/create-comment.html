@@ -1,10 +1,10 @@
 <section>
 
   <form action=""
-        ng-submit="createCommentCtrl.createComment" novalidate>
+        ng-submit="createCommentCtrl.createComment()" novalidate>
 
     <legend>create comment</legend>
-    <textarea name="" cols="30" rows="10" ng-model="createCommentCtrl.comment"></textarea>
+    <textarea name="" cols="30" rows="10" ng-model="createCommentCtrl.comment" placeholder="comment"></textarea>
 
     <button>submit</button>
   </form>

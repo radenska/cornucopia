@@ -128,12 +128,12 @@ function commentService($q, $log, $window, $http, authService){
     });
   };
 
-  service.updateComment = function(comment, commentData){
+  service.updateComment = function(commentID, comment){
     $log.debug('service.updateComment');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/comment/${comment._id}`;
+      let url = `${__API_URI__}/api/comment/${commentID}`;
       let config = {
         header: {
           Accept: 'application/json',
@@ -142,7 +142,7 @@ function commentService($q, $log, $window, $http, authService){
         }
       };
 
-      return $http.put(url, commentData, config);
+      return $http.put(url, comment, config);
     })
     .then( res => {
       $log.log('updated comment');
