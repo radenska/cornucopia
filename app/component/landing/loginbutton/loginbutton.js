@@ -11,9 +11,9 @@ module.exports = {
 function loginButtonController($log, $location) {
   $log.debug('loginButtonController');
 
-  this.goToLogin = function(user) {
+  this.goToLogin = function() {
     $log.debug('loginButtonCtrl.goToLogin');
     console.log('done');
-      $location.url('/login');
-  }
+    $location.url('/login');
+  };
 }

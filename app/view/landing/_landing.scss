@@ -17,10 +17,25 @@ header{
     color: white;
     border: 2px solid #fff;
     transition: 250ms;
+    a{
+      text-decoration: none;
+      color: white;
+    }
   }
   li:hover{
     background: #fff;
     color: #FF9800;
+  }
+  li:nth-child(1){
+    left: 20px;
+  }
+  li:nth-child(2){
+    right: 160px;
+
+  }
+  li:nth-child(3){
+    right: 20px;
+
   }
   .pic{
     background: #fff;
