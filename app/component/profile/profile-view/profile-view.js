@@ -4,7 +4,7 @@ require('./_profile-view.scss');
 
 module.exports = {
   template: require('./profile-view.html'),
-  controller: ['$log', '$rootscope', ProfileViewController],
+  controller: ['$log', '$rootScope', 'profileService', ProfileViewController],
   controllerAs: 'profileViewCtrl'
 };
 
@@ -32,4 +32,3 @@ function ProfileViewController($log, $rootScope, profileService) {
     this.fetchProfiles();
   });
 };
-

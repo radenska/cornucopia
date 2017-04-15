@@ -13,7 +13,7 @@ function LoginController($log, $location, authService) {
   });
 
   this.login = function() {
-    $log.debug('loginCtrl.login');
+    $log.debug('loginCtrl.login', this.user);
 
     authService.login(this.user)
     .then( () => {
