@@ -41,6 +41,8 @@ function RecipeController($log, recipeService) {
     });
   };
 
+  this.fetchRecipes();
+
   this.createRecipe = function() {
     $log.debug('RecipeController.createRecipe()');
 
@@ -51,9 +53,4 @@ function RecipeController($log, recipeService) {
     });
   };
 
-  this.createRecipe();
-
-  this.fetchRecipe = function() {
-
-  };
 }

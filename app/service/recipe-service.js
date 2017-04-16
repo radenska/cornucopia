@@ -39,7 +39,7 @@ function recipeService($q, $log, $http, $window, authService) {
 
     return authService.getToken()
     .then( token  => {
-      let url = `${__API_URL__}/api/recipe`;
+      let url = `${__API_URL__}/api/allrecipes`;
       let config = {
         headers: {
           Accept: 'application/json'
