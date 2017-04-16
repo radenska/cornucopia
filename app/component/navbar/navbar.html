@@ -1,0 +1,9 @@
+<section class="navbar">
+  <h2>Cornucopia</h2>
+  <ul>
+    <li class="nav-link pic"></li>
+    <li ng-hide="navbarCtrl.hideLandingBtns" class="signup"><a href="/#!/join">sign up</a></li>
+    <li ng-hide="navbarCtrl.hideLandingBtns" class="login"><a href="/#!/signin">login</a></li>
+    <li ng-hide="navbarCtrl.hideLogout" class="login"><a ng-click="navbarCtrl.logout()">logout</a></li>
+  </ul>
+</section>
