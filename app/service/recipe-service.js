@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = ['$q', '$log', '$window', 'authService', recipeService];
+module.exports = ['$q', '$log', '$http', '$window', 'authService', recipeService];
 
-function recipeService($q, $log, $window, authService) {
+function recipeService($q, $log, $http, $window, authService) {
   $log.debug('recipeService');
 
   let service = {};
@@ -21,20 +21,17 @@ function recipeService($q, $log, $window, authService) {
           Authorization: `Bearer ${token}`
         }
       };
-
-      return $http.post(url, recipe, config);
+      return $http.post(url, recipe, config)
     })
     .then( res => {
       $log.log('recipe created');
-      let recipe = res.data;
-      console.log(res.data);
       service.recipes.unshift(recipe);
       return recipe;
     })
     .catch( err => {
       $log.error(err.message);
       return $q.reject(err);
-    })
+    });
   };
 
   service.fetchRecipes = function() {
@@ -49,7 +46,7 @@ function recipeService($q, $log, $window, authService) {
         }
       };
 
-      return http.get(url, config);
+      return $http.get(url, config);
     })
     .then( res => {
       $log.log('recipes retrieved');
@@ -81,7 +78,7 @@ function recipeService($q, $log, $window, authService) {
     .then( res => {
       $log.log('recipes updated');
       for (let i = 0; i < service.recipes.length; i++) {
-        let current = serivce.recipes[i];
+        let current = service.recipes[i];
         if (current._id === recipeID) {
           current = res.data;
           break;
@@ -96,7 +93,7 @@ function recipeService($q, $log, $window, authService) {
   };
 
   service.deleteRecipe = function(recipeID) {
-    $Log.debug('recipeService.deleteRecipe');
+    $log.debug('recipeService.deleteRecipe');
 
     return authService.getToken()
     .then( token => {

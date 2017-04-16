@@ -1,8 +1,8 @@
 <section class="recipe">
-  <button ng-click="recipeCtrl.showAddForm()">add a recipe</button>
-  <div class="add-recipe">
+  <button ng-show="recipeCtrl.showBtn" ng-click="recipeCtrl.showAddForm()">add a recipe</button>
+  <div ng-show="recipeCtrl.showForm" class="add-recipe">
     <form class="add-recipe-form"
-          ng-submit="recipeCtrl.saveRecipe()"
+          ng-submit="recipeCtrl.createRecipe()"
           novalidate>
       <input class="input-std"
              type="text"
@@ -21,14 +21,9 @@
              ng-model="recipeCtrl.recipe.ingredients" required>
       <input class="input-std"
              type="text"
-             placeholder="instruction"
+             placeholder="instructions"
              ng-minlength="4"
-             ng-model="recipeCtrl.recipe.instruction" required>
-      <input class="input-std"
-             type="text"
-             placeholder="ingredients"
-             ng-minlength="4"
-             ng-model="recipeCtrl.recipe.ingredients" required>
+             ng-model="recipeCtrl.recipe.instructions" required>
       <input class="input-std"
              type="text"
              placeholder="cook time"
@@ -51,7 +46,8 @@
              ng-model="recipeCtrl.recipe.recipePicURI" required>
       <input type="submit"
              class="btn-std"
-             value="save recipe">
+             value="save recipe"
+             ng-click="recipeCtrl.hideForm()">
     </form>
   </div>
 </section>

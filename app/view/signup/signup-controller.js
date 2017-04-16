@@ -2,9 +2,9 @@
 
 require('./_signup.scss');
 
-module.exports = ['$log', '$location', 'authService', SignupController];
+module.exports = ['$log', '$location', 'authService', 'profileService', SignupController];
 
-function SignupController($log, $location, authService) {
+function SignupController($log, $location, authService, profileService) {
   $log.debug('SignupController');
 
   authService.getToken()
@@ -16,8 +16,11 @@ function SignupController($log, $location, authService) {
     $log.debug('signupCtrl.signup');
 
     authService.signup(user)
-    .then( () => {
+    .then(res => {
       $location.url('/home');
+      let profile = {};
+      profile.name = user.username;
+      profileService.createProfile(profile);
     });
   };
 }
