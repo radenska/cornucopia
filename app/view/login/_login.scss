@@ -1,0 +1,25 @@
+.login-nav {
+  display: inline-block;
+  background-color: orange;
+  width: 100%;
+  li{
+    display: inline-block; 
+    margin-left: 40%; 
+    padding: 10px;
+  }
+   button{
+    display: inline-block;
+      height: 40px;
+      width: 60px;
+      background-color: orange;
+      color: white;
+      border-radius: 15%;
+      border: 1px solid white;
+      transition: 350ms;
+      font-size: 15px;
+      &:hover{
+        background-color: white;
+        color: orange;
+      }
+    }
+}
