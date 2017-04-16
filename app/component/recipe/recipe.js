@@ -35,10 +35,7 @@ function RecipeController($log, recipeService) {
     $log.debug('RecipeController.fetchRecipes()');
 
     recipeService.fetchRecipes()
-    .then(recipes => {
-      this.allRecipes = recipes;
-      $log.debug('ALL RECIPES', this.allRecipes);
-    });
+    .then(recipes => this.allRecipes = recipes);
   };
 
   this.fetchRecipes();
@@ -47,10 +44,7 @@ function RecipeController($log, recipeService) {
     $log.debug('RecipeController.createRecipe()');
 
     recipeService.createRecipe(this.recipe)
-    .then(rec => {
-      $log.debug('REC', rec);
-      this.recipe = null;
-    });
+    .then(rec => this.recipe = null);
   };
 
 }
