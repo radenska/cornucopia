@@ -12,10 +12,10 @@ module.exports = {
 function RecipeController($log, recipeService) {
   $log.debug('RecipeController');
 
-  this.allRecipes = [];
   this.showForm = false;
   this.showBtn = true;
   this.recipe = {};
+  this.allRecipes = [];
 
   this.showAddForm = function() {
     $log.debug('RecipeController.showAddForm()');
@@ -34,14 +34,26 @@ function RecipeController($log, recipeService) {
   this.fetchRecipes = function() {
     $log.debug('RecipeController.fetchRecipes()');
 
+    recipeService.fetchRecipes()
+    .then(recipes => {
+      this.allRecipes = recipes;
+      $log.debug('ALL RECIPES', this.allRecipes);
+    });
   };
 
   this.createRecipe = function() {
     $log.debug('RecipeController.createRecipe()');
 
     recipeService.createRecipe(this.recipe)
-    .then( () => {
+    .then(rec => {
+      $log.debug('REC', rec);
       this.recipe = null;
     });
+  };
+
+  this.createRecipe();
+
+  this.fetchRecipe = function() {
+
   };
 }

@@ -50,4 +50,7 @@
              ng-click="recipeCtrl.hideForm()">
     </form>
   </div>
+  <div ng-repeat="recipe in recipeCtrl.allRecipes">
+    {{recipe}}
+  </div>
 </section>
