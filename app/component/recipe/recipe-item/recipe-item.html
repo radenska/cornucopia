@@ -1,6 +1,14 @@
 <li class="recipe-item">
   <div>
-     {{recipeItemCtrl.recipe}}
+    <ul>
+      <li>Name: {{recipeItemCtrl.recipe.recipeName}}</li>
+      <li>Description: {{recipeItemCtrl.recipe.description}}</li>
+      <li>Ingredients: {{recipeItemCtrl.recipe.ingredients.join(' ')}}</li>
+      <li>Instructions: {{recipeItemCtrl.recipe.instructions}}</li>
+      <li>Cook Time: {{recipeItemCtrl.recipe.cookTime}}</li>
+      <li>Prep Time: {{recipeItemCtrl.recipe.prepTime}}</li>
+      <li>Categories {{recipeItemCtrl.recipe.categories.join(' ')}}</li>
+   </ul>
     <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
     <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
   </div>
