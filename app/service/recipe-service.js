@@ -23,7 +23,7 @@ function recipeService($q, $log, $http, $window, authService) {
       };
       return $http.post(url, recipe, config)
     })
-    .then( res => {
+    .then( recipe => {
       $log.log('recipe created');
       service.recipes.unshift(recipe);
       return recipe;
@@ -61,7 +61,7 @@ function recipeService($q, $log, $http, $window, authService) {
 
     return authService.getToken()
     .then( token  => {
-      let url = `${__API_URL__}/api/recipes/${profileID}`;
+      let url = `${__API_URL__}/api/allrecipes/${profileID}`;
       let config = {
         headers: {
           Accept: 'application/json'
