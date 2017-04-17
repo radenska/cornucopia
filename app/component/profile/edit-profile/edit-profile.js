@@ -16,7 +16,7 @@ function EditProfileController($log, profileService) {
 
     profileService.editProfile(this.profile._id, this.profile);
   };
-};
+}
 
 function UploadProfilePicController($log, profileService) {
   $log.debug('UploadProfilePicController');
@@ -24,7 +24,10 @@ function UploadProfilePicController($log, profileService) {
   this.pic = {};
 
   this.uploadProfilePic = function() {
-    profileService.upload
-    // TODO: left off here to make pic service!
+    $log.debug('uploadProfilePic.editProfile');
+    profileService.uploadProfilePic(this.profile, this.pic)
+    .then( () => {
+      this.pic.file = null;
+    });    
   };
 }
