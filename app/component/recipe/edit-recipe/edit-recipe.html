@@ -1,0 +1,53 @@
+<section ng-init="showEditBtn = true" class="edit-recipe">
+  <button ng-show="showEditBtn" ng-click="showEditBtn = false">edit recipe</button>
+  <div ng-show="!showEditBtn" class="add-recipe">
+    <form class="add-recipe-form"
+          ng-submit="editRecipeCtrl.updateRecipe()"
+          novalidate>
+      <input class="input-std"
+             type="text"
+             placeholder="recipe name"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.recipeName" required>
+      <input class="input-std"
+             type="text"
+             placeholder="recipe description"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.description" required>
+      <input class="input-std"
+             type="text"
+             placeholder="ingredients"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.ingredients" required>
+      <input class="input-std"
+             type="text"
+             placeholder="instructions"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.instructions" required>
+      <input class="input-std"
+             type="text"
+             placeholder="cook time"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.cookTime" required>
+      <input class="input-std"
+             type="text"
+             placeholder="preparation time"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.prepTime" required>
+      <input class="input-std"
+             type="text"
+             placeholder="categories"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.categories" required>
+      <input class="input-std"
+             type="text"
+             placeholder="picture of recipe"
+             ng-minlength="4"
+             ng-model="editRecipeCtrl.recipe.recipePicURI">
+      <input type="submit"
+             class="btn-std"
+             value="update recipe"
+             ng-click="showEditBtn = true">
+    </form>
+  </div>
+</section>

@@ -13,7 +13,7 @@ function profileService($q, $log, $http, authService) {
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/profile`;
+      let url = `${__API_URL__}/api/profile`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -22,7 +22,7 @@ function profileService($q, $log, $http, authService) {
         }
       };
 
-      return $http.post(url, gallery, config);
+      return $http.post(url, profile, config);
     })
     .then( res => {
       $log.log('profile created');
@@ -36,12 +36,12 @@ function profileService($q, $log, $http, authService) {
     });
   };
 
-  service.fetchProfile = function() {
+  service.fetchProfile = function(profileID) {
     $log.debug('profileService.fetchProfile');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/profile/${userID}`;
+      let url = `${__API_URL__}/api/${profileID}`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -52,7 +52,7 @@ function profileService($q, $log, $http, authService) {
       return $http.get(url, config);
     })
     .then( res => {
-      $log.log('Profile Retrieved');
+      $log.log('Profile Retrieved', res);
       service.profile = res.data;
       return service.profile;
     })
@@ -65,9 +65,9 @@ function profileService($q, $log, $http, authService) {
   service.fetchProfiles = function() {
     $log.debug('profileService.fetchProfiles');
 
-    return authService.getToken() 
+    return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/allprofiles`;
+      let url = `${__API_URL__}/api/allprofiles`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -85,15 +85,15 @@ function profileService($q, $log, $http, authService) {
     .catch( err => {
       $log.error(err.message);
       return $q.reject(err);
-    })
-  }
+    });
+  };
 
   service.editProfile = function() {
     $log.debug('profileService.editProfile');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/profile/${userID}`;
+      let url = `${__API_URL__}/api/profile/${userID}`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -113,14 +113,14 @@ function profileService($q, $log, $http, authService) {
       $log.error(err.message);
       return $q.reject(err);
     });
-  }
+  };
 
   service.deleteProfile = function() {
     $log.debug('profileService.deleteProfile');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/profile/${userID}`;
+      let url = `${__API_URL__}/api/profile/${userID}`;
       let config = {
         headers: {
           Authorization: `Bearer ${token}`
@@ -138,5 +138,6 @@ function profileService($q, $log, $http, authService) {
       $log.error(err.message);
       return $q.reject(err);
     });
-  }
+  };
+  return service;
 };

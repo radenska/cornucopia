@@ -1,15 +1,15 @@
 'use strict';
 
-module.exports = ['$q', '$log', '$window', 'authService', recipeService];
+module.exports = ['$q', '$log', '$http', '$window', 'authService', recipeService];
 
-function recipeService($q, $log, $window, authService) {
+function recipeService($q, $log, $http, $window, authService) {
   $log.debug('recipeService');
 
   let service = {};
   service.recipes = [];
 
   service.createRecipe = function(recipe) {
-    $log.debug('recipeService.createRecipe');
+    $log.debug('recipeService.createRecipe()');
 
     return authService.getToken()
     .then( token  => {
@@ -21,35 +21,54 @@ function recipeService($q, $log, $window, authService) {
           Authorization: `Bearer ${token}`
         }
       };
-
-      return $http.post(url, recipe, config);
+      return $http.post(url, recipe, config)
     })
     .then( res => {
       $log.log('recipe created');
-      let recipe = res.data;
-      console.log(res.data);
       service.recipes.unshift(recipe);
       return recipe;
     })
     .catch( err => {
       $log.error(err.message);
       return $q.reject(err);
-    })
+    });
   };
 
   service.fetchRecipes = function() {
-    $log.debug('recipeService.fetchRecipes');
+    $log.debug('recipeService.fetchRecipes()');
+
+    let url = `${__API_URL__}/api/allrecipes`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
+
+    return $http.get(url, config)
+    .then( res => {
+      $log.log('recipes retrieved');
+      service.recipes = res.data;
+      return service.recipes;
+    })
+    .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
+  service.fetchMyRecipes = function(profileID) {
+    $log.debug('recipeService.fetchMyRecipes()');
 
     return authService.getToken()
     .then( token  => {
-      let url = `${__API_URL__}/api/recipe`;
+      let url = `${__API_URL__}/api/recipes/${profileID}`;
       let config = {
         headers: {
           Accept: 'application/json'
         }
       };
 
-      return http.get(url, config);
+      return $http.get(url, config);
     })
     .then( res => {
       $log.log('recipes retrieved');
@@ -81,7 +100,7 @@ function recipeService($q, $log, $window, authService) {
     .then( res => {
       $log.log('recipes updated');
       for (let i = 0; i < service.recipes.length; i++) {
-        let current = serivce.recipes[i];
+        let current = service.recipes[i];
         if (current._id === recipeID) {
           current = res.data;
           break;
@@ -96,7 +115,7 @@ function recipeService($q, $log, $window, authService) {
   };
 
   service.deleteRecipe = function(recipeID) {
-    $Log.debug('recipeService.deleteRecipe');
+    $log.debug('recipeService.deleteRecipe');
 
     return authService.getToken()
     .then( token => {
@@ -114,7 +133,7 @@ function recipeService($q, $log, $window, authService) {
       for (let i = 0; i < service.recipes.length; i++) {
         let current = service.recipes[i];
         if (current._id === recipeID){
-          service.galleries.splice(i, 1);
+          service.recipes.splice(i, 1);
           break;
         }
       }

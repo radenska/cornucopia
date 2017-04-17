@@ -43,11 +43,10 @@ function authService($q, $log, $http, $window) {
 
     return $http.post(url, user, config)
     .then( res => {
-      $log.log('success:', res.data);
       return setToken(res.data);
     })
     .catch( err => {
-      $log.log('failure:', err.message);
+      $log.error('failure:', err.message);
       return $q.reject(err);
     });
   };
@@ -66,11 +65,11 @@ function authService($q, $log, $http, $window) {
 
     return $http.get(url, config)
     .then( res => {
-      $log.log('success:', res.data);
+      $log.log('success');
       return setToken(res.data);
     })
     .catch( err => {
-      $log.log('failure:', err.message);
+      $log.error('failure:', err.message);
       return $q.reject(err);
     });
   };

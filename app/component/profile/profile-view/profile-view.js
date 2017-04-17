@@ -5,20 +5,39 @@ require('./_profile-view.scss');
 module.exports = {
   template: require('./profile-view.html'),
   controller: ['$log', '$rootScope', 'profileService', ProfileViewController],
-  controllerAs: 'profileViewCtrl'
+  controllerAs: 'profileViewCtrl',
+  bindings: {
+    profile: '<'
+  }
 };
 
 function ProfileViewController($log, $rootScope, profileService) {
   $log.debug('ProfileViewController');
 
   this.profiles = [];
+  this.profile = {};
 
   this.fetchProfiles = function() {
+    $log.debug('ProfileViewController.fetchProfiles()');
+
     profileService.fetchProfiles()
     .then( profiles => {
-      this.profiles = profiles[0];
+      this.profiles = profiles;
     });
   };
+
+  // this.fetchProfile = function() {
+  //   $log.debug('ProfileViewController.fetchProfile()');
+  //
+  //   profileService.fetchProfile()
+  //   .then(profile => {
+  //     this.profile = profile;
+  //     $log.debug('THIS PROFILE', this.profile);
+  //   });
+  // }
+
+  this.fetchProfiles();
+  // this.fetchProfile();
 
   this.deleteProfile = function(profile) {
     if (this.profile._id === profile._id) {
@@ -26,9 +45,4 @@ function ProfileViewController($log, $rootScope, profileService) {
     }
   };
 
-  this.fetchProfiles();
-
-  $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchProfiles();
-  });
 };
