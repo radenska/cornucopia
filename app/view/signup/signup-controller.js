@@ -7,6 +7,8 @@ module.exports = ['$log', '$location', 'authService', 'profileService', SignupCo
 function SignupController($log, $location, authService, profileService) {
   $log.debug('SignupController');
 
+  this.myProfile = {};
+
   authService.getToken()
   .then( () => {
     $location.url('/home');
@@ -20,7 +22,11 @@ function SignupController($log, $location, authService, profileService) {
       $location.url('/home');
       let profile = {};
       profile.name = user.username;
-      profileService.createProfile(profile);
+      profileService.createProfile(profile)
+      .then(profile => {
+        $log.debug('My Profile', profile);
+        this.myProfile = profile;
+      });
     });
   };
 }

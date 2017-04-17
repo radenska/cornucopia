@@ -7,7 +7,7 @@ module.exports = ['$log', '$location', 'authService', 'profileService', LoginCon
 function LoginController($log, $location, authService, profileService) {
   $log.debug('LoginController');
 
-  this.profile = {};
+  this.myProfile = {};
 
   authService.getToken()
   .then( () => {
@@ -21,6 +21,11 @@ function LoginController($log, $location, authService, profileService) {
     .then(user => {
       $log.debug('USER', user);
       $location.url('/home');
+      profileService.fetchProfile(user.userinfo._id)
+      .then(profile => {
+        $log.debug('My Profile', profile);
+        this.myProfile = profile;
+      });
       profileService.fetchProfiles()
       .then(profiles => $log.debug('THE PROFILES YO', profiles));
     });

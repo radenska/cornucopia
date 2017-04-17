@@ -36,12 +36,12 @@ function profileService($q, $log, $http, authService) {
     });
   };
 
-  service.fetchProfile = function() {
+  service.fetchProfile = function(profileID) {
     $log.debug('profileService.fetchProfile');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile`;
+      let url = `${__API_URL__}/api/${profileID}`;
       let config = {
         headers: {
           Accept: 'application/json',
