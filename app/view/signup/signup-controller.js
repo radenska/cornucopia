@@ -20,7 +20,7 @@ function SignupController($log, $location, authService, profileService) {
       $location.url('/home');
       let profile = {};
       profile.name = user.username;
-      profileService.createProfile(profile);
+      profileService.createProfile(profile)
     });
   };
 }

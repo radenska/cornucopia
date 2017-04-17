@@ -2,10 +2,24 @@
 
 require('./_home.scss');
 
-module.exports = ['$log', '$rootScope', HomeController];
+module.exports = ['$log', '$rootScope', 'recipeService', HomeController];
 
-function HomeController($log, $rootScope) {
-  $log.debug('homeController');
+function HomeController($log, $rootScope, recipeService) {
+  $log.debug('HomeController', this);
 
-  //add more home stuff!
+  this.allRecipes = [];
+
+  this.fetchRecipes = function() {
+    $log.debug('HomeController.fetchRecipes()');
+
+    recipeService.fetchRecipes()
+    .then(recipes => {
+      this.allRecipes = recipes;
+    });
+  };
+
+  this.fetchRecipes();
+  $rootScope.$on('$locationChangeSuccess', () => {
+    this.fetchRecipes();
+  });
 }

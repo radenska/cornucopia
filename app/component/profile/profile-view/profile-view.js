@@ -5,13 +5,17 @@ require('./_profile-view.scss');
 module.exports = {
   template: require('./profile-view.html'),
   controller: ['$log', '$rootScope', 'profileService', ProfileViewController],
-  controllerAs: 'profileViewCtrl'
+  controllerAs: 'profileViewCtrl',
+  bindings: {
+    profile: '<'
+  }
 };
 
 function ProfileViewController($log, $rootScope, profileService) {
   $log.debug('ProfileViewController');
 
   this.profiles = [];
+  this.profile = {};
 
   this.fetchProfiles = function() {
     profileService.fetchProfiles()
@@ -26,9 +30,4 @@ function ProfileViewController($log, $rootScope, profileService) {
     }
   };
 
-  this.fetchProfiles();
-
-  $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchProfiles();
-  });
 };

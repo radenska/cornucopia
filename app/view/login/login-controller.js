@@ -2,7 +2,7 @@
 
 require('./_login.scss');
 
-module.exports = ['$log', '$location', 'authService', LoginController];
+module.exports = ['$log', '$location', 'authService', 'profileService', LoginController];
 
 function LoginController($log, $location, authService) {
   $log.debug('LoginController');
@@ -16,7 +16,7 @@ function LoginController($log, $location, authService) {
     $log.debug('loginCtrl.login');
 
     authService.login(this.user)
-    .then( () => {
+    .then(user => {
       $location.url('/home');
     });
   };

@@ -1,0 +1,53 @@
+<section ng-init="showCreateBtn = true" class="create-recipe">
+  <button ng-show="showCreateBtn" ng-click="showCreateBtn = false">add a recipe</button>
+  <div ng-show="!showCreateBtn" class="add-recipe">
+    <form class="add-recipe-form"
+          ng-submit="createRecipeCtrl.createRecipe()"
+          novalidate>
+      <input class="input-std"
+             type="text"
+             placeholder="recipe name"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.recipeName" required>
+      <input class="input-std"
+             type="text"
+             placeholder="recipe description"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.description" required>
+      <input class="input-std"
+             type="text"
+             placeholder="ingredients"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.ingredients" required>
+      <input class="input-std"
+             type="text"
+             placeholder="instructions"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.instructions" required>
+      <input class="input-std"
+             type="text"
+             placeholder="cook time"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.cookTime" required>
+      <input class="input-std"
+             type="text"
+             placeholder="preparation time"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.prepTime" required>
+      <input class="input-std"
+             type="text"
+             placeholder="categories"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.categories" required>
+      <input class="input-std"
+             type="text"
+             placeholder="picture of recipe"
+             ng-minlength="4"
+             ng-model="createRecipeCtrl.recipe.recipePicURI" required>
+      <input type="submit"
+             class="btn-std"
+             value="save recipe"
+             ng-click="showCreateBtn = true">
+    </form>
+  </div>
+</section>

@@ -59,6 +59,31 @@ function recipeService($q, $log, $http, $window, authService) {
     });
   };
 
+  service.fetchMyRecipes = function(profileID) {
+    $log.debug('recipeService.fetchMyRecipes');
+
+    return authService.getToken()
+    .then( token  => {
+      let url = `${__API_URL__}/api/recipes/${profileID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json'
+        }
+      };
+
+      return $http.get(url, config);
+    })
+    .then( res => {
+      $log.log('recipes retrieved');
+      service.recipes = res.data;
+      return service.recipes;
+    })
+    .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
   service.updateRecipe = function(recipeID, recipeData) {
     $log.debug('recipeService.updateRecipe');
 
@@ -111,7 +136,7 @@ function recipeService($q, $log, $http, $window, authService) {
       for (let i = 0; i < service.recipes.length; i++) {
         let current = service.recipes[i];
         if (current._id === recipeID){
-          service.galleries.splice(i, 1);
+          service.recipes.splice(i, 1);
           break;
         }
       }
