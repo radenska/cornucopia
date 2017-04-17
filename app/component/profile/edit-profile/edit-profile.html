@@ -2,7 +2,10 @@
   <form class="edits"
     ng-submit="editProfileCtrl.edit(editProfileCtrl.user)"
     novalidate>
-EDIT PROFILE PLACEHOLDER
     <!--Add edit inputs here-->
+    <fieldset>
+      <span class="item-label">Name:</span>
+      <input type="name" class="input-std" type="text"
+        ng-model="editProfileCtrl.profile.name">
   </form>
 </section>
