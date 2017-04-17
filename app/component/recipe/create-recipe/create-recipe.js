@@ -4,14 +4,14 @@ require('./_create-recipe.scss');
 
 module.exports = {
   template: require('./create-recipe.html'),
-  controller: ['$log', 'recipeService', CreateRecipeController],
+  controller: ['$log', '$rootScope', 'recipeService', CreateRecipeController],
   controllerAs: 'createRecipeCtrl',
   bindings: {
     profile: '<'
   }
 };
 
-function CreateRecipeController($log, recipeService) {
+function CreateRecipeController($log, $rootScope, recipeService) {
   $log.debug('CreateRecipeController');
 
   this.recipe = {};
