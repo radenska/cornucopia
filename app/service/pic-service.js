@@ -12,7 +12,7 @@ function picService($q, $log, $http, Upload, authService) {
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}/${profilePicURI}`;
+      let url = `${__API_URL__}/api/profile/${userID}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json'
@@ -63,7 +63,7 @@ function picService($q, $log, $http, Upload, authService) {
     $log.debug('service.uploadRecipePic')
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/recipe/${recipe._id}/${recipePicURI}`;
+      let url = `${__API_URL__}/api/recipe/${recipeData._id}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json'
@@ -104,7 +104,7 @@ function picService($q, $log, $http, Upload, authService) {
     })
     .then( res => {
       $log.log('Recipe pic deleted.');
-      
+
     })
     .catch( err => {
       $log.error(err.message);
