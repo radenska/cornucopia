@@ -23,7 +23,7 @@ function recipeService($q, $log, $http, $window, authService) {
       };
       return $http.post(url, recipe, config)
     })
-    .then( res => {
+    .then( recipe => {
       $log.log('recipe created');
       service.recipes.unshift(recipe);
       return recipe;
