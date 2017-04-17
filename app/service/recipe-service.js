@@ -9,7 +9,7 @@ function recipeService($q, $log, $http, $window, authService) {
   service.recipes = [];
 
   service.createRecipe = function(recipe) {
-    $log.debug('recipeService.createRecipe');
+    $log.debug('recipeService.createRecipe()');
 
     return authService.getToken()
     .then( token  => {
@@ -35,19 +35,16 @@ function recipeService($q, $log, $http, $window, authService) {
   };
 
   service.fetchRecipes = function() {
-    $log.debug('recipeService.fetchRecipes');
+    $log.debug('recipeService.fetchRecipes()');
 
-    return authService.getToken()
-    .then( token  => {
-      let url = `${__API_URL__}/api/allrecipes`;
-      let config = {
-        headers: {
-          Accept: 'application/json'
-        }
-      };
+    let url = `${__API_URL__}/api/allrecipes`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
 
-      return $http.get(url, config);
-    })
+    return $http.get(url, config)
     .then( res => {
       $log.log('recipes retrieved');
       service.recipes = res.data;
@@ -60,7 +57,7 @@ function recipeService($q, $log, $http, $window, authService) {
   };
 
   service.fetchMyRecipes = function(profileID) {
-    $log.debug('recipeService.fetchMyRecipes');
+    $log.debug('recipeService.fetchMyRecipes()');
 
     return authService.getToken()
     .then( token  => {

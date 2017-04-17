@@ -18,11 +18,26 @@ function ProfileViewController($log, $rootScope, profileService) {
   this.profile = {};
 
   this.fetchProfiles = function() {
+    $log.debug('ProfileViewController.fetchProfiles()');
+
     profileService.fetchProfiles()
     .then( profiles => {
-      this.profiles = profiles[0];
+      this.profiles = profiles;
     });
   };
+
+  this.fetchProfile = function() {
+    $log.debug('ProfileViewController.fetchProfile()');
+
+    profileService.fetchProfile()
+    .then(profile => {
+      this.profile = profile;
+      $log.debug('THIS PROFILE', this.profile);
+    });
+  }
+
+  this.fetchProfiles();
+  this.fetchProfile();
 
   this.deleteProfile = function(profile) {
     if (this.profile._id === profile._id) {

@@ -41,7 +41,7 @@ function profileService($q, $log, $http, authService) {
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}`;
+      let url = `${__API_URL__}/api/profile`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -52,7 +52,7 @@ function profileService($q, $log, $http, authService) {
       return $http.get(url, config);
     })
     .then( res => {
-      $log.log('Profile Retrieved');
+      $log.log('Profile Retrieved', res);
       service.profile = res.data;
       return service.profile;
     })
