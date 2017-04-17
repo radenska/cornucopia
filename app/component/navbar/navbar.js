@@ -18,12 +18,24 @@ function NavbarController($log, $location, $rootScope, authService) {
 
     if (path !== '/home') this.hideLogout = true;
 
-    if (path === '/signin' || path === '/join') this.hideLandingBtns = true;
+    // if (path === '/signin' || path === '/join') this.hideLandingBtns = true;
+
+    if(path === '/join') {
+      this.hideSignupBtn = true;
+      this.hideLoginBtn = false;
+    }
+
+    if(path === '/signin') {
+      this.hideLoginBtn = true;
+      this.hideSignupBtn = false;
+    }
 
     if (path === '/landing' || path === '/') this.hideLandingBtns = false;
 
     if (path === '/home') {
-      this.hideLandingBtns = true;
+      // this.hideLandingBtns = true;
+      this.hideLoginBtn = true;
+      this.hideSignupBtn = true;
       this.hideLogout = false;
       authService.getToken()
       .catch( () => {
