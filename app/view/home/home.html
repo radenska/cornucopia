@@ -1,11 +1,10 @@
 <section class="home">
-  :::::::::::::::::{{homeCtrl.myUserID}}:::::::::::::::::::::::
   <div class="container">
-    <profile-view></profile-view>
-    <create-recipe></create-recipe>
+    <profile-view profile="homeCtrl.myProfile"></profile-view>
+    <create-recipe profile="homeCtrl.myProfile"></create-recipe>
     <ul>
       <recipe-item
-        ng-repeat="item in homeCtrl.allRecipes"
+        ng-repeat="item in homeCtrl.myRecipes.recipes"
         recipe="item">
       </recipe-item>
     </ul>

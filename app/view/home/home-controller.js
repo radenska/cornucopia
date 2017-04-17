@@ -8,29 +8,37 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
   $log.debug('HomeController', this);
 
   this.allRecipes = [];
+  this.myProfile = {};
   this.myUserID = $stateParams.userID;
 
   this.fetchRecipes = function() {
     $log.debug('HomeController.fetchRecipes()');
 
     recipeService.fetchRecipes()
-    .then(recipes => {
-      this.allRecipes = recipes;
-    });
+    .then(recipes => this.allRecipes = recipes);
   };
+
+  // this.fetchMyRecipes = function(profileID) {
+  //   $log.debug('HomeController.fetchRecipes()');
+  //
+  //   recipeService.fetchMyRecipes(profileID)
+  //   .then(recipes => this.myRecipes = recipes);
+  // };
+
   this.fetchProfile = function() {
     $log.debug('HomeController.fetchProfile()');
 
     profileService.fetchProfile(this.myUserID)
-    .then(profile => {
-      $log.debug('My Profile', profile);
-      this.myProfile = profile;
-    });
+    .then(profile => this.myProfile = profile)
+    .then( () => recipeService.fetchMyRecipes(this.myProfile._id))
+    .then(recipes => this.myRecipes = recipes);
   }
+
   this.fetchProfile();
-  this.fetchRecipes();
+  // this.fetchMyRecipes(this.myProfile._id);
+  // this.fetchRecipes();
 
   $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchRecipes();
+    this.fetchProfile();
   });
 }

@@ -9,11 +9,6 @@ function LoginController($log, $location, authService, profileService) {
 
   this.myProfile = {};
 
-  // authService.getToken()
-  // .then( () => {
-  //   $location.url('/home');
-  // });
-
   this.login = function() {
     $log.debug('loginCtrl.login');
 
@@ -21,13 +16,6 @@ function LoginController($log, $location, authService, profileService) {
     .then(user => {
       $log.debug('USER', user);
       $location.url(`/home/${user.userinfo._id}`);
-    //   profileService.fetchProfile(user.userinfo._id)
-    //   .then(profile => {
-    //     $log.debug('My Profile', profile);
-    //     this.myProfile = profile;
-    //   });
-    //   profileService.fetchProfiles()
-    //   .then(profiles => $log.debug('THE PROFILES YO', profiles));
     });
   };
 }
