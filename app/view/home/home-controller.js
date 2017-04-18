@@ -7,8 +7,6 @@ module.exports = ['$log', '$rootScope', '$stateParams', 'profileService', 'recip
 function HomeController($log, $rootScope, $stateParams, profileService, recipeService) {
   $log.debug('HomeController', this);
 
-  this.allRecipes = [];
-  this.myProfile = {};
   this.myUserID = $stateParams.userID;
 
   this.fetchRecipes = function() {

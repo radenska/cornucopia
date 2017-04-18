@@ -13,6 +13,7 @@ function recipeService($q, $log, $http, $window, authService) {
 
     return authService.getToken()
     .then( token  => {
+      $log.debug(`***************${JSON.stringify(token)}************************`)
       let url = `${__API_URL__}/api/recipe`;
       let config = {
         headers: {
@@ -24,11 +25,12 @@ function recipeService($q, $log, $http, $window, authService) {
       return $http.post(url, recipe, config)
     })
     .then( res => {
-      // $log.log('recipe created', res.data);
+      $log.log('recipe created', res.data);
       // service.recipes.unshift(res.data.recipe);
       return res.data.recipe;
     })
     .catch( err => {
+      $log.debug('AM I IN THE CATCH BLOCK?')
       $log.error(err.message);
       return $q.reject(err);
     });
