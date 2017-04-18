@@ -66,8 +66,7 @@ function picService($q, $log, $http, Upload, authService) {
       let url = `${__API_URL__}/api/recipe/${recipeData._id}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json'
+        Accept: 'application/json'
       };
 
       return Upload.upload({
@@ -75,12 +74,12 @@ function picService($q, $log, $http, Upload, authService) {
         headers,
         method: 'POST',
         data: {
-          file: picData.file
+          file: picData
         }
       });
     })
     .then( res => {
-      $log.log('RESPONSE:', res)
+      $log.log('RESPONSE:', res, 'picdata', picData);
     })
     .catch( err => {
       $log.error(err.message);
