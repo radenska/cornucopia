@@ -1,6 +1,5 @@
 <section class="edit-profile">
-  <form class="edits"
-    ng-submit="editProfileCtrl.editProfile()"
+  <form ng-submit="editProfileCtrl.editProfile()"
     novalidate>
 
     <h3>Edit your profile.</h3>
@@ -18,13 +17,16 @@
      novalidate>
 
     <div>
-      <p class="grab-img"
+      <p
+        class="grab-img"
         ngf-select
         ng-model="editProfileCtrl.pic">
 
         Click to select a profile pic
 
       </p>
+      <p>{{editProfileCtrl.pic}}</p>
+
 
       <img ng-src="{{editProfileCtrl.pic}}" alt="profile photo">
 

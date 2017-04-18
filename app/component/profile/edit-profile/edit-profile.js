@@ -22,10 +22,10 @@ function EditProfileController($log, profileService, picService) {
   };
 
   this.uploadProfilePic = function() {
-    $log.debug('THIS PROFILE', this.profile);
+    $log.debug('THIS PIC', this.pic);
     picService.uploadProfilePic(this.profile, this.pic)
     .then( () => {
-      this.pic.file = null;
+      this.pic = null;
     });
   };
 }
