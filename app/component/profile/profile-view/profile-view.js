@@ -26,18 +26,7 @@ function ProfileViewController($log, $rootScope, profileService) {
     });
   };
 
-  // this.fetchProfile = function() {
-  //   $log.debug('ProfileViewController.fetchProfile()');
-  //
-  //   profileService.fetchProfile()
-  //   .then(profile => {
-  //     this.profile = profile;
-  //     $log.debug('THIS PROFILE', this.profile);
-  //   });
-  // }
-
   this.fetchProfiles();
-  // this.fetchProfile();
 
   this.deleteProfile = function(profile) {
     if (this.profile._id === profile._id) {

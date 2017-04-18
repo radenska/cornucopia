@@ -1,10 +1,10 @@
 <section class="navbar">
   <h2>Cornucopia</h2>
-  <ul>
+  <ul ng-init="navbarCtrl.hideSignupBtn = false; navbarCtrl.hideLoginBtn = false; navbarCtrl.hideLogout = true">
     <li class="nav-link pic"></li>
-    <li ng-hide="navbarCtrl.hideSignupBtn" class="signup"><a href="/#!/join">sign up</a></li>
-    <li ng-hide="navbarCtrl.hideLoginBtn" class="login"><a href="/#!/signin">login</a></li>
-    <li ng-hide="navbarCtrl.hideLogout" class="login"><a ng-click="navbarCtrl.logout()">logout</a></li>
+    <li ng-show="!navbarCtrl.hideSignupBtn" class="signup" ng-click="navbarCtrl.goSignUp()">sign up</li>
+    <li ng-show="!navbarCtrl.hideLoginBtn" class="login" ng-click="navbarCtrl.goLogin()">login</li>
+    <li ng-show="!navbarCtrl.hideLogout" class="login" ng-click="navbarCtrl.logout()">logout</li>
 
   </ul>
 </section>
