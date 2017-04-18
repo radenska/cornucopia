@@ -11,6 +11,10 @@ module.exports = {
 function NavbarController($log, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
+  this.hideLoginBtn = false;
+  this.hideSignupBtn = false;
+  this.hideLogout = true;
+
   this.goSignUp = function() {
     $log.debug('NavbarController.goSignUp()');
 
@@ -23,7 +27,7 @@ function NavbarController($log, $location, $rootScope, authService) {
     $location.url('/signin');
   };
 
-  this.logout = function() {
+  this.logout = () => {
     $log.debug('NavbarController.logout()');
     authService.logout()
     .then( () => {
@@ -38,6 +42,12 @@ function NavbarController($log, $location, $rootScope, authService) {
     let path = `/${pathArray[1]}`;
 
     $log.debug('LOCATION PATH', path);
+
+    if (path === '/' || path === '/landing') {
+      this.hideLoginBtn = false;
+      this.hideSignupBtn = false;
+      this.hideLogout = true;
+    }
 
     if (path === `/home`) {
       this.hideLoginBtn = true;

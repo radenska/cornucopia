@@ -1,10 +1,9 @@
 <section class="navbar">
   <h2>Cornucopia</h2>
-  <ul ng-init="navbarCtrl.hideSignupBtn = false; navbarCtrl.hideLoginBtn = false; navbarCtrl.hideLogout = true">
+  <ul>
     <li class="nav-link pic"></li>
     <li ng-show="!navbarCtrl.hideSignupBtn" class="signup" ng-click="navbarCtrl.goSignUp()">sign up</li>
     <li ng-show="!navbarCtrl.hideLoginBtn" class="login" ng-click="navbarCtrl.goLogin()">login</li>
     <li ng-show="!navbarCtrl.hideLogout" class="login" ng-click="navbarCtrl.logout()">logout</li>
-
   </ul>
 </section>
