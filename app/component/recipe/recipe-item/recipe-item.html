@@ -1,16 +1,26 @@
-<li class="recipe-item">
-  <div>
-    <ul>
-      <li>Name: {{recipeItemCtrl.recipe.recipeName}}</li>
-      <li>Description: {{recipeItemCtrl.recipe.description}}</li>
-      <li>Ingredients: {{recipeItemCtrl.recipe.ingredients.join(' ')}}</li>
-      <li>Instructions: {{recipeItemCtrl.recipe.instructions}}</li>
-      <li>Cook Time: {{recipeItemCtrl.recipe.cookTime}}</li>
-      <li>Prep Time: {{recipeItemCtrl.recipe.prepTime}}</li>
-      <li>Categories {{recipeItemCtrl.recipe.categories.join(' ')}}</li>
-   </ul>
-    <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
-    <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
-    <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+<section class="recipe-item">
+  <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
+  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="">
+  <div class="description-container">
+    <p>Description: {{recipeItemCtrl.recipe.description}}</p>
+    <li>Categories {{recipeItemCtrl.recipe.categories.join(' ')}}</li>
   </div>
-</li>
+  <section class="ingredient-section">
+    <span>ingredients</span>
+  <ul>
+    <li ng-repeat="ingredient in recipeItemCtrl.recipe.ingredients"> {{ingredient}}</li>
+  </ul>
+</section>
+  <section class="direction-section">
+    <span>Directions</span>
+    <ul>
+      <li ng-repeat="instruction in recipeItemCtrl.recipe.instructions"> {{instruction}}</li>
+    </ul>
+    <li>Cook Time: {{recipeItemCtrl.recipe.cookTime}}</li>
+    <li>Prep Time: {{recipeItemCtrl.recipe.prepTime}}</li>
+  </section>
+
+  <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
+  <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
+  <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+</section>
