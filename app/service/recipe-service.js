@@ -21,15 +21,16 @@ function recipeService($q, $log, $http, $window, authService) {
           Authorization: `Bearer ${token}`
         }
       };
-      return $http.post(url, recipe, config)
+      return $http.post(url, recipe, config);
     })
     .then( res => {
-      // $log.log('recipe created', res.data);
+      $log.log('recipe created', res.data);
       // service.recipes.unshift(res.data.recipe);
       return res.data.recipe;
     })
     .catch( err => {
-      $log.error(err.message);
+      $log.error('FAILED', err.message);
+
       return $q.reject(err);
     });
   };
@@ -51,7 +52,7 @@ function recipeService($q, $log, $http, $window, authService) {
       return service.recipes;
     })
     .catch( err => {
-      $log.error(err.message);
+      $log.error('failed to retrieve recipes', err.message);
       return $q.reject(err);
     });
   };

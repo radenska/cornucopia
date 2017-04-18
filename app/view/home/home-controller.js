@@ -7,8 +7,6 @@ module.exports = ['$log', '$rootScope', '$stateParams', 'profileService', 'recip
 function HomeController($log, $rootScope, $stateParams, profileService, recipeService) {
   $log.debug('HomeController', this);
 
-  this.allRecipes = [];
-  this.myProfile = {};
   this.myUserID = $stateParams.userID;
 
   this.fetchRecipes = function() {
@@ -25,7 +23,7 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
     .then(profile => this.myProfile = profile)
     .then( () => recipeService.fetchMyRecipes(this.myProfile._id))
     .then(recipes => this.myRecipes = recipes);
-  }
+  };
 
   this.fetchProfile();
 
