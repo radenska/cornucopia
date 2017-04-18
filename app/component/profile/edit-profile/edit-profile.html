@@ -1,6 +1,6 @@
 <section class="edit-profile">
   <form class="edits"
-    ng-submit="editProfileCtrl.edit(editProfileCtrl.user)"
+    ng-submit="editProfileCtrl.editProfile()"
     novalidate>
 
     <h3>Edit your profile.</h3>
@@ -10,17 +10,23 @@
       <input type="name" class="input-std" type="text"
         ng-model="editProfileCtrl.profile.name">
     </fieldset>
+  </form>
+
+
+  <form
+     ng-submit="editProfileCtrl.uploadProfilePic()"
+     novalidate>
 
     <div>
       <p class="grab-img"
         ngf-select
-        ng-model="uploadProfilePicCtrl.pic.file">
+        ng-model="editProfileCtrl.pic.file">
 
         Click to select a profile pic
 
       </p>
 
       <button class="btn-std">Upload</button>
-
+    </div>
   </form>
 </section>
