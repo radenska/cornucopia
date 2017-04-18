@@ -7,8 +7,6 @@ module.exports = ['$log', '$rootScope', '$stateParams', 'profileService', 'recip
 function HomeController($log, $rootScope, $stateParams, profileService, recipeService) {
   $log.debug('HomeController', this);
 
-  this.allRecipes = [];
-  this.myProfile = {};
   this.myUserID = $stateParams.userID;
 
   this.fetchRecipes = function() {
@@ -17,13 +15,6 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
     recipeService.fetchRecipes()
     .then(recipes => this.allRecipes = recipes);
   };
-
-  // this.fetchMyRecipes = function(profileID) {
-  //   $log.debug('HomeController.fetchRecipes()');
-  //
-  //   recipeService.fetchMyRecipes(profileID)
-  //   .then(recipes => this.myRecipes = recipes);
-  // };
 
   this.fetchProfile = function() {
     $log.debug('HomeController.fetchProfile()');
@@ -35,8 +26,6 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
   }
 
   this.fetchProfile();
-  // this.fetchMyRecipes(this.myProfile._id);
-  // this.fetchRecipes();
 
   $rootScope.$on('$locationChangeSuccess', () => {
     this.fetchProfile();
