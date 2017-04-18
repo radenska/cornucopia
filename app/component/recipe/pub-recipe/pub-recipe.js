@@ -5,10 +5,22 @@ require('./_pub-recipe.scss');
 module.exports = {
   template: require('./pub-recipe.html'),
   controller: ['$log', 'recipeService', PubRecipeController],
-  controllerAs: 'pubRecipeCtrl'
+  controllerAs: 'pubRecipeCtrl',
+  bindings: {
+    recipe: '<'
+  }
 };
 
 function PubRecipeController($log, recipeService) {
   $log.debug('PubRecipeController');
+
+  this.fetchRecipes = function() {
+    $log.debug('PubRecipeController.fetchRecipes()');
+
+    recipeService.fetchRecipes()
+    .then(recipes => this.allRecipes = recipes);
+  };
+
+  this.fetchRecipes();
 
 }
