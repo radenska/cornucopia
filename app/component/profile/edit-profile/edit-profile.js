@@ -5,7 +5,10 @@ require('./_edit-profile.scss');
 module.exports = {
   template: require('./edit-profile.html'),
   controller: ['$log', 'profileService', 'picService', EditProfileController],
-  controllerAs: 'editProfileCtrl'
+  controllerAs: 'editProfileCtrl',
+  bindings: {
+    profile: '<'
+  }
 };
 
 
@@ -20,6 +23,7 @@ function EditProfileController($log, profileService, picService) {
   };
 
   this.uploadProfilePic = function() {
+    $log.debug('THIS PIC', this.pic);
     picService.uploadProfilePic(this.profile, this.pic)
     .then( () => {
       this.pic.file = null;

@@ -8,7 +8,7 @@
     <fieldset>
       <span class="item-label">Name:</span>
       <input type="name" class="input-std" type="text"
-        ng-model="editProfileCtrl.profile.name">
+        ng-model="editProfileCtrl.profile.name" placeholer="name">
     </fieldset>
   </form>
 
@@ -25,6 +25,8 @@
         Click to select a profile pic
 
       </p>
+
+      <img ng-src="{{editProfileCtrl.pic}}" alt="profile photo">
 
       <button class="btn-std">Upload</button>
     </div>

@@ -18,7 +18,7 @@ function NavbarController($log, $location, $rootScope, authService) {
 
     if (path !== '/home') this.hideLogout = true;
 
-    // if (path === '/signin' || path === '/join') this.hideLandingBtns = true;
+    if (path === '/signin' || path === '/join') this.hideLandingBtns = true;
 
     if(path === '/join') {
       this.hideSignupBtn = true;

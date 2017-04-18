@@ -12,7 +12,7 @@ function picService($q, $log, $http, Upload, authService) {
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}/pic`;
+      let url = `${__API_URL__}/api/profile/${profileData._id}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json'
@@ -23,13 +23,12 @@ function picService($q, $log, $http, Upload, authService) {
         headers,
         method: 'POST',
         data: {
-          file: picData.file
+          file: picData
         }
       });
     })
     .then( res => {
-      profileData.pic.unshift(res.data);
-      return res.data;
+      $log.log('RESPONSE:', res, 'picdata', picData);
     })
     .catch( err => {
       $log.error(err.message);
@@ -38,9 +37,11 @@ function picService($q, $log, $http, Upload, authService) {
   };
 
   service.deleteProfilePic = function(profileData, picData) {
+    $log.debug('picService.deleteProfilePic');
+
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}/${picData._id}`;
+      let url = `${__API_URL__}/api/profile/${profile._id}/${picData._id}`;
       let config = {
         headers: {
           Authorization: `Bearer ${token}`
@@ -54,20 +55,19 @@ function picService($q, $log, $http, Upload, authService) {
     })
     .catch( err => {
       $log.err(err.message);
-
       return $q.reject(err);
     });
   };
 
   service.uploadRecipePic = function(recipeData, picData) {
-    $log.debug('service.uploadRecipePic')
+    $log.debug('service.uploadRecipePic');
+    
     return authService.getToken()
     .then( token => {
       let url = `${__API_URL__}/api/recipe/${recipeData._id}/pic`;
       let headers = {
         Authorization: `Bearer ${token}`,
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json'
+        Accept: 'application/json'
       };
 
       return Upload.upload({
@@ -80,8 +80,7 @@ function picService($q, $log, $http, Upload, authService) {
       });
     })
     .then( res => {
-      $log.log('RESPONSE:', res)
-
+      $log.log('RESPONSE:', res, 'picdata', picData);
     })
     .catch( err => {
       $log.error(err.message);
