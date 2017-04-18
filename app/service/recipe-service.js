@@ -6,7 +6,7 @@ function recipeService($q, $log, $http, $window, authService) {
   $log.debug('recipeService');
 
   let service = {};
-  service.recipes = [];
+  // service.recipes = [];
 
   service.createRecipe = function(recipe) {
     $log.debug('recipeService.createRecipe()');
@@ -23,10 +23,10 @@ function recipeService($q, $log, $http, $window, authService) {
       };
       return $http.post(url, recipe, config)
     })
-    .then( recipe => {
-      $log.log('recipe created');
-      service.recipes.unshift(recipe);
-      return recipe;
+    .then( res => {
+      // $log.log('recipe created', res.data);
+      // service.recipes.unshift(res.data.recipe);
+      return res.data.recipe;
     })
     .catch( err => {
       $log.error(err.message);
