@@ -75,12 +75,13 @@ function picService($q, $log, $http, Upload, authService) {
         headers,
         method: 'POST',
         data: {
-          file: picData.file
+          file: picData
         }
       });
     })
     .then( res => {
       $log.log('RESPONSE:', res)
+
     })
     .catch( err => {
       $log.error(err.message);

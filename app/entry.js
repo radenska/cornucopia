@@ -11,8 +11,9 @@ const ngTouch = require('angular-touch');
 const ngAnimate = require('angular-animate');
 const uiBootstrap = require('angular-ui-bootstrap');
 const ngFileUpload = require('ng-file-upload');
+const ngRoute = require('angular-route');
 
-const cornucopia = angular.module('cornucopia', [ngTouch, ngAnimate, uiRouter, uiBootstrap, ngFileUpload]);
+const cornucopia = angular.module('cornucopia', [ngTouch, ngAnimate, uiRouter, uiBootstrap, ngRoute, ngFileUpload]);
 
 let context = require.context('./config/', true, /\.js$/);
 context.keys().forEach( key => {
