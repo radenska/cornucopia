@@ -15,14 +15,12 @@ function NavbarController($log, $location, $rootScope, authService) {
     $log.debug('NavbarController.goSignUp()');
 
     $location.url('/join');
-    this.checkPath();
   };
 
   this.goLogin = function() {
     $log.debug('NavbarController.goLogin()');
 
     $location.url('/signin');
-    this.checkPath();
   };
 
   this.logout = function() {
@@ -30,16 +28,18 @@ function NavbarController($log, $location, $rootScope, authService) {
     authService.logout()
     .then( () => {
       $location.url('/');
-      this.checkPath();
     });
   };
 
-  this.checkPath = function() {
+  this.checkPath = () => {
     $log.debug('NavbarController.checkPath()');
 
-    let path = $location.path();
+    let pathArray = $location.path().split('/');
+    let path = `/${pathArray[1]}`;
 
-    if (path === '/home') {
+    $log.debug('LOCATION PATH', path);
+
+    if (path === `/home`) {
       this.hideLoginBtn = true;
       this.hideSignupBtn = true;
       this.hideLogout = false;
