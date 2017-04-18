@@ -30,6 +30,7 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .catch( err => {
       $log.error('FAILED', err.message);
+
       return $q.reject(err);
     });
   };
