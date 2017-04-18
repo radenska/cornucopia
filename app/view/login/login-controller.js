@@ -15,7 +15,7 @@ function LoginController($log, $location, authService, profileService) {
     authService.login(this.user)
     .then(user => {
       $log.debug('USER', user);
-      $location.url(`/home/${user.userinfo._id}`);
+      $location.url(`/home/${user._id}`);
     });
   };
 }

@@ -17,7 +17,6 @@ function UploadPicController($log, picService) {
   this.pic = {};
 
   this.uploadPic = function() {
-    $log.debug('THIS PIC', this.pic);
     picService.uploadRecipePic(this.recipe, this.pic)
     .then( () => {
       this.pic = null;
