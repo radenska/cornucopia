@@ -20,8 +20,8 @@ function CreateRecipeController($log, $rootScope, recipeService) {
     $log.debug('RecipeItemController.createRecipe()');
 
     recipeService.createRecipe(this.recipe)
-    .then(rec => this.recipe = null);
-    console.log('RECIPE:', this.recipe);
+    // .then( () => recipeService.fetchMyRecipes(this.profile))
+    .then( () => this.recipe = null);
   };
 
 }

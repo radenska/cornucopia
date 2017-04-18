@@ -17,6 +17,9 @@ function RecipeItemController($log, recipeService) {
   this.deleteRecipe = function() {
     $log.debug('RecipeItemController.deleteRecipe');
 
-    recipeService.deleteRecipe(this.recipe._id);
+    let profileID = this.recipe.profileID;
+    
+    recipeService.deleteRecipe(this.recipe._id)
+    .then( () => recipeService.fetchMyRecipes(profileID));
   };
 }
