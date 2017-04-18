@@ -23,7 +23,7 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
     .then(profile => this.myProfile = profile)
     .then( () => recipeService.fetchMyRecipes(this.myProfile._id))
     .then(recipes => this.myRecipes = recipes);
-  }
+  };
 
   this.fetchProfile();
 
