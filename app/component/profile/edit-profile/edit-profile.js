@@ -14,8 +14,7 @@ module.exports = {
 
 function EditProfileController($log, profileService, picService) {
   $log.debug('EditProfileController');
-  
-  this.profile = {};
+
   this.pic = {};
 
   this.editProfile = function() {
@@ -23,11 +22,10 @@ function EditProfileController($log, profileService, picService) {
   };
 
   this.uploadProfilePic = function() {
-    $log.debug('THIS PIC', this.pic);
+    $log.debug('THIS PROFILE', this.profile);
     picService.uploadProfilePic(this.profile, this.pic)
     .then( () => {
       this.pic.file = null;
-    });    
+    });
   };
 }
-
