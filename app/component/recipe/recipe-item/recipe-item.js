@@ -11,6 +11,8 @@ module.exports = {
   }
 };
 
+
+
 function RecipeItemController($log, recipeService) {
   $log.debug('RecipeItemController');
 
@@ -18,5 +20,6 @@ function RecipeItemController($log, recipeService) {
     $log.debug('RecipeItemController.deleteRecipe');
 
     recipeService.deleteRecipe(this.recipe._id);
+
   };
 }

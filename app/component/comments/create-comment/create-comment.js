@@ -12,10 +12,13 @@ module.exports = {
 function CreateCommentController($log, commentService){
   $log.debug('createCommentController');
 
-  this.comment = {};
+  // this.comment = {};
 
   this.createComment = function(){
-    commentService.createComment(this.recipe, this.comment)
+    let commentData = {
+      comment: this.comment
+    };
+    commentService.createComment(this.recipe, commentData)
     .then( () => {
       this.comment = null;
     });

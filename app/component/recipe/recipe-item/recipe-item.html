@@ -1,6 +1,6 @@
 <section class="recipe-item">
   <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
-  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="">
+  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="altimage">
   <div class="description-container">
     <p>Description: {{recipeItemCtrl.recipe.description}}</p>
     <li>Categories {{recipeItemCtrl.recipe.categories.join(' ')}}</li>
@@ -23,4 +23,12 @@
   <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
   <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
   <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+
+  <ul>
+    <li ng-repeat="comment in recipeItemCtrl.recipe.comments">
+      <comment-item comment="comment"></comment-item>
+    </li>
+  </ul>
+  <!--<comment-item recipe="recipeItemCtrl.recipe"></comment-item>-->
+  <create-comment recipe="recipeItemCtrl.recipe"></create-comment>
 </section>

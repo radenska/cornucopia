@@ -37,7 +37,7 @@ function commentService($q, $log, $window, $http, authService){
   service.fetchComment = function(comment){
     $log.debug('service.fetchComment');
 
-    let url = `${__API_URL__}/api/allcomments/${comment._id}`;
+    let url = `${__API_URL__}/api/allcomments/${comment}`;
     let config = {
       headers: {
         'Content-Type': 'application/json',
