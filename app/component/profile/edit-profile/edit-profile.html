@@ -2,11 +2,10 @@
   <form ng-submit="editProfileCtrl.editProfile()"
     novalidate>
 
-    <h3>Edit your profile.</h3>
-THE PROFILE {{editProfileCtrl.profile}}
+    <h3>Edit your profile</h3>
     <fieldset>
       <span class="item-label">Name:</span>
-      <input type="name" class="input-std" type="text"
+      <input type="name" name="name" class="input-std" type="text"
         ng-model="editProfileCtrl.profile.name" placeholer="name">
     </fieldset>
     <button>update profile</button>
@@ -26,10 +25,9 @@ THE PROFILE {{editProfileCtrl.profile}}
         Click to select a profile pic
 
       </p>
-      <p>{{editProfileCtrl.pic}}</p>
 
 
-      <img ng-src="{{editProfileCtrl.pic}}" alt="profile photo">
+      <img ng-src="{{editProfileCtrl.profile.profilePicURI}}" alt="profile photo">
 
       <button class="btn-std">Upload</button>
     </div>
