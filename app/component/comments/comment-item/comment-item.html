@@ -1,7 +1,7 @@
 <section class="commentItem">
   <div class="current-comment" ng-if="!commentItemCtrl.showEditComment">
-    <span>commentID</span>
-    <p> {{commentItemCtrl.commentID}} </p>
+    <span>comment</span>
+    <p> {{commentItemCtrl.comment}} </p>
   </div>
 
   <edit-comment ng-if="commentItemCtrl.showEditComment" comment="commentItemCtrl.comment"></edit-comment>

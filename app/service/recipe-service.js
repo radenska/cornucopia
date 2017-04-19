@@ -48,12 +48,12 @@ function recipeService($q, $log, $http, $window, authService) {
 
     return $http.get(url, config)
     .then( recipe => {
-      $log.log('recipe retrieved');
+      $log.log('recipe retrieved', recipe);
       // service.recipe = res.data;
       return recipe;
     })
     .catch( err => {
-      $log.error(err.message);
+      $log.error(err.message, 'FAILED TO RETRIEVE');
       return $q.reject(err);
     });
   };

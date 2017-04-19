@@ -7,7 +7,7 @@ module.exports = {
   controller: ['$log', 'commentService', CommentItemController],
   controllerAs: 'commentItemCtrl',
   bindings: {
-    commentID: '<'
+    comment: '<'
   }
 };
 
@@ -19,16 +19,7 @@ function CommentItemController($log, commentService){
     commentService.deleteComment(this.comment);
   };
 
-  this.fetchComment = () => {
-    $log.debug('fetchComment');
-
-    //todo
-
-    commentService.fetchComment(this.comment)
-    .then( res => console.log('my comment', res.comment.comment))
-    .catch(err => console.log(err, '++++++++++'));
-  };
-
-  this.fetchComment();
+  
+  // this.fetchComment();
 }
 
