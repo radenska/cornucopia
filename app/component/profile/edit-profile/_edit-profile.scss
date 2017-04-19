@@ -1,0 +1,18 @@
+@import "../../../scss/lib/theme/vars";
+
+.input-std {
+  width: 40%;
+}
+
+button {
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+  color: $white;
+  width: 30%;
+  height: 50%;
+}
+
+form {
+  border: solid;
+}
