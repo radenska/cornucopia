@@ -1,5 +1,6 @@
 <section class="recipe-item">
-  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="">
+  <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
+  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="altimage">
   <div class="description-container">
     <h2 class="recipe-name"> {{recipeItemCtrl.recipe.recipeName}}</h2>
     <p>{{recipeItemCtrl.recipe.description}}</p>
@@ -24,6 +25,11 @@
       <h3>Cook Time</h3>
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
+     <on-changes recipeItemCtrl.recipe></on-changes>
+     <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
+    <ul>
+      <comment-item ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
+  </ul>
   </section>
 
   <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
