@@ -41,8 +41,6 @@ function RecipeItemController($log, recipeService, commentService) {
 
     this.updateRecipeView();
   };
-  // this.updateRecipeView();
-
 
   this.deleteRecipe = function() {
     $log.debug('RecipeItemController.deleteRecipe');

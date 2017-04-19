@@ -28,7 +28,7 @@
      <on-changes recipeItemCtrl.recipe></on-changes>
      <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
     <ul>
-      <comment-item ng-repeat="comment in recipeItemCtrl.commentArr" comment="comment"></comment-item>
+      <comment-item ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
   </ul>
   </section>
 

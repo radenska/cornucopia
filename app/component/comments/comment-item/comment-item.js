@@ -4,20 +4,33 @@ require('./_comment-item.scss');
 
 module.exports = {
   template: require('./comment-item.html'),
-  controller: ['$log', 'commentService', CommentItemController],
+  controller: ['$log', 'commentService', 'profileService', CommentItemController],
   controllerAs: 'commentItemCtrl',
   bindings: {
     comment: '<'
   }
 };
 
-function CommentItemController($log, commentService){
+function CommentItemController($log, commentService, profileService){
   $log.debug('CommentItemController');
   this.showEditComment = false;
 
   this.deleteComment = function(comment){
-    $log.debug('CommentItemController.deleteComment', comment)
+    $log.debug('CommentItemController.deleteComment')
     commentService.deleteComment(comment);
+  };
+
+  this.commenter = function(profileID) {
+    $log.debug('CommentItemController.deleteComment', profileID)
+
+    profileService.fetchProfile2(profileID)
+    .then(profile => this.commenter = profile);
+  };
+
+  this.$onChanges = function() {
+    $log.debug('CommentItemController.$onInit()', this.comment);
+
+    this.commenter(this.comment.commenterProfileID);
   };
 
 }

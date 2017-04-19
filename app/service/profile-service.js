@@ -62,6 +62,32 @@ function profileService($q, $log, $http, authService) {
     });
   };
 
+  service.fetchProfile2 = function(profileID) {
+    $log.debug('profileService.fetchProfile2');
+
+    return authService.getToken()
+    .then( token => {
+      let url = `${__API_URL__}/api/profile2/${profileID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      return $http.get(url, config);
+    })
+    .then( res => {
+      $log.log('Profile Retrieved', res);
+      service.profile = res.data;
+      return service.profile;
+    })
+    .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
   service.fetchProfiles = function() {
     $log.debug('profileService.fetchProfiles');
 
