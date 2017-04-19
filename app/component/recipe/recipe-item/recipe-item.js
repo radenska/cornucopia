@@ -9,19 +9,18 @@ module.exports = {
   bindings: {
     recipe: '<',
     onRecipeDeleted: '&',
-    comment: '<'
+    comment: '<',
+    loggedIn: '<'
   }
 };
-
-
 
 function RecipeItemController($log, recipeService, commentService) {
   $log.debug('RecipeItemController');
 
-  this.commentArr = [];
-
   this.updateRecipeView = function(){
     $log.debug('RecipeItemController.updateRecipe');
+
+    this.commentArr = [];
 
     recipeService.fetchRecipe(this.recipe._id)
     .then( recipe => this.recipe = recipe.data)

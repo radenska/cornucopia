@@ -26,13 +26,14 @@
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
      <on-changes recipeItemCtrl.recipe></on-changes>
-     <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
+     recipeItemCtrl.loggedIn---{{recipeItemCtrl.loggedIn}}---recipeItemCtrl.loggedIn
+     <create-comment ng-if="recipeItemCtrl.loggedIn" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
     <ul>
       <comment-item ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
   </ul>
   </section>
 
-  <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
-  <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
-  <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+   <upload-pic ng-if="recipeItemCtrl.loggedIn" recipe="recipeItemCtrl.recipe"></upload-pic>
+   <edit-recipe ng-if="recipeItemCtrl.loggedIn" recipe="recipeItemCtrl.recipe"></edit-recipe>
+   <button ng-if="recipeItemCtrl.loggedIn" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
 </section>

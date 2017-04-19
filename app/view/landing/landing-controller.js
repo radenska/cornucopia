@@ -7,6 +7,8 @@ module.exports = ['$log', '$location', '$rootScope', 'authService', LandingContr
 function LandingController($log, $location, $rootScope, authService) {
   $log.debug('LandingController', this);
 
+  this.loggedIn = false;
+
   let url = $location.url();
   this.showSignup = url === '/join#signup' || url === 'join';
 }

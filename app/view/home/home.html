@@ -4,6 +4,7 @@
     <create-recipe on-recipe-created="homeCtrl.updateRecipeView()" profile="homeCtrl.myProfile"></create-recipe>
     <ul>
       <recipe-item
+        logged-in="homeCtrl.loggedIn"
         ng-repeat="item in homeCtrl.myRecipes.recipes"
         on-recipe-deleted="homeCtrl.updateRecipeView()"
         recipe="item">
