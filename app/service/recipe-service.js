@@ -83,17 +83,14 @@ function recipeService($q, $log, $http, $window, authService) {
   service.fetchMyRecipes = function(profileID) {
     $log.debug('recipeService.fetchMyRecipes()');
 
-    return authService.getToken()
-    .then( token  => {
-      let url = `${__API_URL__}/api/allrecipes/${profileID}`;
-      let config = {
-        headers: {
-          Accept: 'application/json'
-        }
-      };
+    let url = `${__API_URL__}/api/allrecipes/${profileID}`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
 
-      return $http.get(url, config);
-    })
+    return $http.get(url, config)
     .then( res => {
       $log.log('recipes retrieved');
       service.recipes = res.data;

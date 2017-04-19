@@ -39,18 +39,14 @@ function profileService($q, $log, $http, authService) {
   service.fetchProfile = function(userID) {
     $log.debug('profileService.fetchProfile');
 
-    return authService.getToken()
-    .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}`;
-      let config = {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      };
+    let url = `${__API_URL__}/api/profile/${userID}`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
 
-      return $http.get(url, config);
-    })
+    return $http.get(url, config)
     .then( res => {
       $log.log('Profile Retrieved', res);
       service.profile = res.data;
@@ -65,18 +61,14 @@ function profileService($q, $log, $http, authService) {
   service.fetchProfile2 = function(profileID) {
     $log.debug('profileService.fetchProfile2');
 
-    return authService.getToken()
-    .then( token => {
-      let url = `${__API_URL__}/api/profile2/${profileID}`;
-      let config = {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      };
+    let url = `${__API_URL__}/api/profile2/${profileID}`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
 
-      return $http.get(url, config);
-    })
+    return $http.get(url, config)
     .then( res => {
       $log.log('Profile Retrieved', res);
       service.profile = res.data;
@@ -91,18 +83,14 @@ function profileService($q, $log, $http, authService) {
   service.fetchProfiles = function() {
     $log.debug('profileService.fetchProfiles');
 
-    return authService.getToken()
-    .then( token => {
-      let url = `${__API_URL__}/api/allprofiles`;
-      let config = {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      };
+    let url = `${__API_URL__}/api/allprofiles`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
 
-      return $http.get(url, config);
-    })
+    return $http.get(url, config)
     .then( res => {
       $log.log('All profiles retrieved.');
       service.profiles = res.data;
