@@ -1,35 +1,38 @@
 <section class="edit-profile">
+  <h3>Edit your profile.</h3>
+
   <form ng-submit="editProfileCtrl.editProfile()"
     novalidate>
 
     <h3>Edit your profile</h3>
     <fieldset>
+
       <span class="item-label">Name:</span>
       <input type="name" name="name" class="input-std" type="text"
         ng-model="editProfileCtrl.profile.name" placeholer="name">
     </fieldset>
     <button>update profile</button>
   </form>
-
-
   <form
      ng-submit="editProfileCtrl.uploadProfilePic()"
      novalidate>
 
     <div>
+      <img class="upload-img" ng-src="{{editProfileCtrl.profile.profilePicURI}}" alt="profile photo">
       <p
         class="grab-img"
         ngf-select
         ng-model="editProfileCtrl.pic">
 
-        Click to select a profile pic
+        <button class="btn-std">Select an avatar</button>
 
       </p>
-
 
       <img ng-src="{{editProfileCtrl.profile.profilePicURI}}" alt="profile photo">
 
       <button class="btn-std">Upload</button>
     </div>
   </form>
+
+
 </section>
