@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', '$window', 'profileService', 'picService', EditProfileController],
   controllerAs: 'editProfileCtrl',
   bindings: {
-    profile: '<'
+    profile: '<',
+    onProfileUpdated: '&'
   }
 };
 
@@ -18,7 +19,8 @@ function EditProfileController($log, $window, profileService, picService) {
   this.pic = {};
 
   this.editProfile = function() {
-    profileService.editProfile(this.profile._id, this.profile);
+    profileService.editProfile(this.profile._id, this.profile)
+    .then( () => this.onProfileUpdated())
   };
 
   this.uploadProfilePic = function() {
@@ -30,6 +32,9 @@ function EditProfileController($log, $window, profileService, picService) {
       this.pic = null;
       location.reload(true);
     });
-    
   };
+
+  this.onProfileUpdated = function() {
+    
+  }
 }
