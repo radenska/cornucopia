@@ -7,20 +7,20 @@ module.exports = {
   controller: ['$log', '$rootScope', 'recipeService', CreateRecipeController],
   controllerAs: 'createRecipeCtrl',
   bindings: {
-    profile: '<'
+    profile: '<',
+    recipe: '<',
+    onRecipeCreated: '&'
   }
 };
 
 function CreateRecipeController($log, $rootScope, recipeService) {
   $log.debug('CreateRecipeController');
 
-  this.recipe = {};
-
   this.createRecipe = function() {
     $log.debug('RecipeItemController.createRecipe()');
 
     recipeService.createRecipe(this.recipe)
-    // .then( () => recipeService.fetchMyRecipes(this.profile))
+    .then( () => this.onRecipeCreated({}))
     .then( () => this.recipe = null);
   };
 

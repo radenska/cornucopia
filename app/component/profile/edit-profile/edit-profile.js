@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', 'profileService', 'picService', EditProfileController],
   controllerAs: 'editProfileCtrl',
   bindings: {
-    profile: '<'
+    profile: '<',
+    onProfileUpdated: '&'
   }
 };
 
@@ -18,14 +19,18 @@ function EditProfileController($log, profileService, picService) {
   this.pic = {};
 
   this.editProfile = function() {
-    profileService.editProfile(this.profile._id, this.profile);
+    profileService.editProfile(this.profile._id, this.profile)
+    .then( () => this.onProfileUpdated())
   };
 
   this.uploadProfilePic = function() {
-    $log.debug('THIS PIC', this.pic);
+    $log.debug('EditProfileController.uploadProfilePic');
     picService.uploadProfilePic(this.profile, this.pic)
-    .then( () => {
-      this.pic = null;
-    });
+    .then( () => this.onProfileUpdated())
+    .then( () => this.pic = null);
   };
+
+  this.onProfileUpdated = function() {
+    
+  }
 }

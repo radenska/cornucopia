@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', 'recipeService', EditRecipeController],
   controllerAs: 'editRecipeCtrl',
   bindings: {
-    recipe: '<'
+    recipe: '<',
+    onEditRecipe: '&'
   }
 };
 
@@ -17,7 +18,7 @@ function EditRecipeController($log, recipeService) {
   this.updateRecipe = function() {
     $log.debug('EditRecipeController.updateRecipe()');
 
-    recipeService.updateRecipe(this.recipe._id, this.recipe);
+    recipeService.updateRecipe(this.recipe._id, this.recipe)
 
   };
 }
