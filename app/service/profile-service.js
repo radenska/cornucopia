@@ -88,12 +88,12 @@ function profileService($q, $log, $http, authService) {
     });
   };
 
-  service.editProfile = function() {
+  service.editProfile = function(profileID, profileData) {
     $log.debug('profileService.editProfile');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${userID}`;
+      let url = `${__API_URL__}/api/profile/${profileID}`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -102,7 +102,7 @@ function profileService($q, $log, $http, authService) {
         }
       };
 
-      return $http.post(url, config);
+      return $http.put(url, profileData, config);
     })
     .then( res => {
       $log.log('Profile edited successfully.');

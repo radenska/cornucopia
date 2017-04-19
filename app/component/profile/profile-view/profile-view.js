@@ -7,7 +7,7 @@ module.exports = {
   controller: ['$log', '$rootScope', 'profileService', ProfileViewController],
   controllerAs: 'profileViewCtrl',
   bindings: {
-    profile: '<'
+    profile: '<',
   }
 };
 
@@ -16,17 +16,18 @@ function ProfileViewController($log, $rootScope, profileService) {
 
   this.profiles = [];
   this.profile = {};
+  this.showEditView = false;
 
-  this.fetchProfiles = function() {
-    $log.debug('ProfileViewController.fetchProfiles()');
-
-    profileService.fetchProfiles()
-    .then( profiles => {
-      this.profiles = profiles;
-    });
-  };
-
-  this.fetchProfiles();
+  // this.fetchProfiles = function() {
+  //   $log.debug('ProfileViewController.fetchProfiles()');
+  //
+  //   profileService.fetchProfiles()
+  //   .then( profiles => {
+  //     this.profiles = profiles;
+  //   });
+  // };
+  //
+  // this.fetchProfiles();
 
   this.deleteProfile = function(profile) {
     if (this.profile._id === profile._id) {
@@ -34,4 +35,13 @@ function ProfileViewController($log, $rootScope, profileService) {
     }
   };
 
+  this.updateProfileView = function() {
+    $log.debug('ProfileViewController.updateProfileView()');
+
+    profileService.fetchProfile(this.profile.userID)
+    .then(profile => {
+      this.myProfile = profile;
+      this.showEditView = false;
+    })
+  };
 };
