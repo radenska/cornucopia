@@ -30,7 +30,7 @@ function EditProfileController($log, $window, profileService, picService) {
     picService.uploadProfilePic(this.profile, this.pic)
     .then( () => {
       this.pic = null;
-      // location.reload(true);
+      location.reload(true);
       this.onProfileUpdated();
     });
   };
