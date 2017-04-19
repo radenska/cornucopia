@@ -109,10 +109,10 @@ function commentService($q, $log, $window, $http, authService){
     .then( token => {
       let url = `${__API_URL__}/api/comment/${comment._id}`;
       let config = {
-        header: {
+        headers: {
+          Authorization: `Bearer ${token}`,
           Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
+          'Content-Type': 'application/json'
         }
       };
 

@@ -15,11 +15,9 @@ function CommentItemController($log, commentService){
   $log.debug('CommentItemController');
   this.showEditComment = false;
 
-  this.deleteComment = function(){
-    commentService.deleteComment(this.comment);
+  this.deleteComment = function(comment){
+    $log.debug('CommentItemController.deleteComment', comment)
+    commentService.deleteComment(comment);
   };
 
-  
-  // this.fetchComment();
 }
-

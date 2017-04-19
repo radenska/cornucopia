@@ -28,7 +28,6 @@
      <on-changes recipeItemCtrl.recipe></on-changes>
      <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
     <ul>
-     ---------------------{{ recipeItemCtrl.commentArr}}--------------
       <comment-item ng-repeat="comment in recipeItemCtrl.commentArr" comment="comment"></comment-item>
   </ul>
   </section>

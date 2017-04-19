@@ -29,7 +29,7 @@ function RecipeItemController($log, recipeService, commentService) {
       if (this.recipe.comments.length !== 0) {
         this.recipe.comments.forEach(commentID => {
           commentService.fetchComment(commentID)
-          .then(res => this.commentArr.push(res.comment))
+          .then(commentObj => this.commentArr.push(commentObj))
         });
       }
     })
