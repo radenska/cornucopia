@@ -2,33 +2,36 @@
   <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
   <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="altimage">
   <div class="description-container">
-    <p>Description: {{recipeItemCtrl.recipe.description}}</p>
-    <li>Categories {{recipeItemCtrl.recipe.categories.join(' ')}}</li>
+    <h2 class="recipe-name"> {{recipeItemCtrl.recipe.recipeName}}</h2>
+    <p>{{recipeItemCtrl.recipe.description}}</p>
+    <span>{{recipeItemCtrl.recipe.categories.join(' ')}}</span>
   </div>
   <section class="ingredient-section">
-    <span>ingredients</span>
+    <h2>Ingredients</h2>
   <ul>
     <li ng-repeat="ingredient in recipeItemCtrl.recipe.ingredients"> {{ingredient}}</li>
   </ul>
 </section>
   <section class="direction-section">
-    <span>Directions</span>
+    <h2>Directions</h2>
     <ul>
       <li ng-repeat="instruction in recipeItemCtrl.recipe.instructions"> {{instruction}}</li>
     </ul>
-    <li>Cook Time: {{recipeItemCtrl.recipe.cookTime}}</li>
-    <li>Prep Time: {{recipeItemCtrl.recipe.prepTime}}</li>
+    <div class="time-container">
+      <h3>Prep Time</h3>
+      <span>{{recipeItemCtrl.recipe.prepTime}}</span>
+    </div>
+    <div class="time-container">
+      <h3>Cook Time</h3>
+      <span>{{recipeItemCtrl.recipe.cookTime}}</span>
+    </div>
+     <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
+    <ul>
+      <comment-item ng-repeat="comment in recipeItemCtrl.recipe.comments" comment="comment"></comment-item>
+  </ul>
   </section>
 
-  <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
-  <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
-  <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
-
-  <ul>
-    <li ng-repeat="comment in recipeItemCtrl.recipe.comments">
-      <comment-item comment="comment"></comment-item>
-    </li>
-  </ul>
-  <!--<comment-item recipe="recipeItemCtrl.recipe"></comment-item>-->
-  <create-comment recipe="recipeItemCtrl.recipe"></create-comment>
+   <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
+   <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe> 
+   <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button> 
 </section>

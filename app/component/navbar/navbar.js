@@ -40,8 +40,7 @@ function NavbarController($log, $location, $rootScope, authService) {
 
     let pathArray = $location.path().split('/');
     let path = `/${pathArray[1]}`;
-
-    $log.debug('LOCATION PATH', path);
+    if (pathArray.length === 1) path = '/';
 
     if (path === '/' || path === '/landing') {
       this.hideLoginBtn = false;
@@ -66,11 +65,6 @@ function NavbarController($log, $location, $rootScope, authService) {
       this.hideSignupBtn = false;
       this.hideLogout = true;
     }
-
-
-    $log.debug('LOGIN BUTTON', this.hideLoginBtn);
-    $log.debug('SIGNUP BUTTON', this.hideSignupBtn);
-    $log.debug('LOGOUT BUTTON', this.hideLogout);
 
   };
 

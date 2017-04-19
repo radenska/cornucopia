@@ -35,6 +35,29 @@ function recipeService($q, $log, $http, $window, authService) {
     });
   };
 
+  service.fetchRecipe = function(recipeID) {
+    $log.debug('recipeService.fetchMyRecipes()');
+
+
+    let url = `${__API_URL__}/api/recipe/${recipeID}`;
+    let config = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
+
+    return $http.get(url, config)
+    .then( recipe => {
+      $log.log('recipe retrieved');
+      // service.recipe = res.data;
+      return recipe;
+    })
+    .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
   service.fetchRecipes = function() {
     $log.debug('recipeService.fetchRecipes()');
 

@@ -5,7 +5,8 @@ module.exports = {
   controller: ['$log', 'commentService', CreateCommentController],
   controllerAs: 'createCommentCtrl',
   bindings: {
-    recipe: '<'
+    recipe: '<',
+    onCommentCreated: '&'
   }
 };
 
@@ -20,6 +21,7 @@ function CreateCommentController($log, commentService){
     };
     commentService.createComment(this.recipe, commentData)
     .then( () => {
+      this.onCommentCreated();
       this.comment = null;
     });
   };

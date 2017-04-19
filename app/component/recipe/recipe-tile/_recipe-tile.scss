@@ -1,0 +1,26 @@
+.card{
+  width:100vw;
+  height:50vh;
+  background:url(https://static.pexels.com/photos/48726/pexels-photo-48726.jpeg);
+  background-size: cover;
+  position: relative;
+  .span-contianer{
+    height: 100px;
+    width: 100%;
+    line-height: 140px;
+    background: rgba(0,0,0, 0.2);
+    position: absolute;
+    bottom: 0;
+    span{
+     color: white;
+     font-size: 125%;
+     display: block;
+     height: 40px;
+     line-height: 60px;
+     margin-left: 30px;
+    }
+     .desc{
+        color: rgba(255, 255, 255, 0.8)
+    }
+  }
+}

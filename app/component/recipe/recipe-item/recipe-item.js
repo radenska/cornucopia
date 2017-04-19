@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', 'recipeService', RecipeItemController],
   controllerAs: 'recipeItemCtrl',
   bindings: {
-    recipe: '<'
+    recipe: '<',
+    onRecipeDeleted: '&'
   }
 };
 
@@ -16,10 +17,22 @@ module.exports = {
 function RecipeItemController($log, recipeService) {
   $log.debug('RecipeItemController');
 
+  this.updateRecipeView = function(){
+    $log.debug('RecipeItemController.updateRecipe');
+    recipeService.fetchRecipe(this.recipe._id)
+    .then( recipe => {
+      console.log('@#$%^&*()@#$%^&*#$%^&*', recipe);
+      return this.recipe = recipe;
+    });
+  };
+
   this.deleteRecipe = function() {
     $log.debug('RecipeItemController.deleteRecipe');
 
-    recipeService.deleteRecipe(this.recipe._id);
+    let profileID = this.recipe.profileID;
+
+    recipeService.deleteRecipe(this.recipe._id)
+    .then( () => this.onRecipeDeleted({}));
 
   };
 }

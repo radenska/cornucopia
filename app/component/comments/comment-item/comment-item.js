@@ -7,13 +7,12 @@ module.exports = {
   controller: ['$log', 'commentService', CommentItemController],
   controllerAs: 'commentItemCtrl',
   bindings: {
-    comment: '<'
+    commentID: '<'
   }
 };
 
 function CommentItemController($log, commentService){
   $log.debug('CommentItemController');
-  console.log('this.comment', this.co);
   this.showEditComment = false;
 
   this.deleteComment = function(){
@@ -26,7 +25,7 @@ function CommentItemController($log, commentService){
     //todo
 
     commentService.fetchComment(this.comment)
-    .then( comment => console.log('my comment', comment))
+    .then( res => console.log('my comment', res.comment.comment))
     .catch(err => console.log(err, '++++++++++'));
   };
 

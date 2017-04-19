@@ -1,0 +1,7 @@
+<section class="pub-recipe">
+  <ul>
+    <recipe-tile ng-repeat="instance in pubRecipeCtrl.allRecipes | limitTo: 10"
+                 recipe="instance">
+    </recipe-tile>
+  </ul>
+</section>
