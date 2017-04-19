@@ -1,7 +1,7 @@
 <section ng-init="showCreateBtn = true" class="create-recipe">
   <button ng-show="showCreateBtn" ng-click="showCreateBtn = false">add a recipe</button>
   <div ng-show="!showCreateBtn" class="add-recipe">
-    <form class="add-recipe-form"
+    <form name="createRecipeForm"
           ng-submit="createRecipeCtrl.createRecipe()"
           novalidate>
       <input class="input-std"
@@ -42,7 +42,8 @@
       <input type="submit"
              class="btn-std"
              value="save recipe"
-             ng-click="showCreateBtn = true">
+             ng-click="showCreateBtn = true"
+             ng-disabled="createRecipeForm.$invalid">
     </form>
   </div>
 </section>

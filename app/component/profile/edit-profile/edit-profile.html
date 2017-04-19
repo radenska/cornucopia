@@ -2,11 +2,11 @@
   <form ng-submit="editProfileCtrl.editProfile()"
     novalidate>
 
-    <h3>Edit your profile.</h3>
+    <h3>Edit your profile</h3>
 THE PROFILE {{editProfileCtrl.profile}}
     <fieldset>
       <span class="item-label">Name:</span>
-      <input type="name" class="input-std" type="text"
+      <input type="name" name="name" class="input-std" type="text"
         ng-model="editProfileCtrl.profile.name" placeholer="name">
     </fieldset>
     <button>update profile</button>
