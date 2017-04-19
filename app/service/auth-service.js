@@ -44,7 +44,8 @@ function authService($q, $log, $http, $window) {
 
     return $http.post(url, user, config)
     .then( res => {
-      return setToken(res.data);
+      setToken(res.data);
+      return res;
     })
     .catch( err => {
       $log.error('failure:', err.message);

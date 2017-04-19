@@ -9,13 +9,6 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
 
   this.myUserID = $stateParams.userID;
 
-  this.fetchRecipes = function() {
-    $log.debug('HomeController.fetchRecipes()');
-
-    recipeService.fetchRecipes()
-    .then(recipes => this.allRecipes = recipes);
-  };
-
   this.fetchProfile = function() {
     $log.debug('HomeController.fetchProfile()');
 
@@ -25,9 +18,20 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
     .then(recipes => this.myRecipes = recipes);
   };
 
+  this.updateRecipeView = function() {
+    $log.debug('HomeController.updateRecipeView()');
+
+    recipeService.fetchMyRecipes(this.myProfile._id)
+    .then(recipes => this.myRecipes = recipes);
+  };
+
+  this.updateProfileView = function() {
+    $log.debug('HomeController.updateProfileView()');
+
+    profileService.fetchProfile(this.myUserID)
+    .then(profile => this.myProfile = profile);
+  };
+
   this.fetchProfile();
 
-  $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchProfile();
-  });
 }

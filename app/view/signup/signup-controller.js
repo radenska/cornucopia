@@ -11,9 +11,9 @@ function SignupController($log, $location, authService, profileService) {
     $log.debug('signupCtrl.signup');
 
     authService.signup(user)
-    .then(user => {
+    .then(res => {
       let profile = {};
-      profile.name = user.username;
+      profile.name = res.config.data.username;
       profileService.createProfile(profile)
       .then(profile => $location.url(`/home/${profile.userID}` ));
     });
