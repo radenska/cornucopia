@@ -1,6 +1,6 @@
 <section class="profile-view">
   <div ng-if="!profileViewCtrl.showEditView">
-    profile name: {{profileViewCtrl.profile}}<br>
+    profile name: {{profileViewCtrl.profile.name}}<br>
     profile pic: <img ng-src="{{profileViewCtrl.profile.profilePicURI}}">
   </div>
   <button ng-if="!profileViewCtrl.showEditView" ng-click="profileViewCtrl.showEditView = true">edit your profile</button>
