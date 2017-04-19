@@ -12,10 +12,9 @@ module.exports = {
   }
 };
 
-
 function EditProfileController($log, $window, profileService, picService) {
   $log.debug('EditProfileController');
-  
+
   this.pic = {};
 
   this.editProfile = function() {
@@ -35,6 +34,6 @@ function EditProfileController($log, $window, profileService, picService) {
   };
 
   this.onProfileUpdated = function() {
-    
+
   }
 }
