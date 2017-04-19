@@ -33,11 +33,11 @@ function commentService($q, $log, $window, $http, authService){
     });
   };
 
-  
-  service.fetchComment = function(comment){
+
+  service.fetchComment = function(commentID){
     $log.debug('service.fetchComment');
 
-    let url = `${__API_URL__}/api/allcomments/${comment}`;
+    let url = `${__API_URL__}/api/comment/${commentID}`;
     let config = {
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ function commentService($q, $log, $window, $http, authService){
   service.fetchRecipeComments = function(recipeData){
     $log.debug('service.fetchRecipeComments');
 
-  
+
     let url = `${__API_URL__}/api/allrecipecomments/${recipeData._id}`;
     let config = {
       headers: {
@@ -92,7 +92,7 @@ function commentService($q, $log, $window, $http, authService){
     };
 
     return $http.get(url, config)
-    .then( res => { 
+    .then( res => {
       $log.log('fetched all the comments');
       return res.data;
     })

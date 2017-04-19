@@ -18,18 +18,30 @@ module.exports = {
 function RecipeItemController($log, recipeService, commentService) {
   $log.debug('RecipeItemController');
 
+  this.commentArr = [];
+
   this.updateRecipeView = function(){
     $log.debug('RecipeItemController.updateRecipe');
+
     recipeService.fetchRecipe(this.recipe._id)
-    .then( recipe => this.recipe = recipe)
-    .then( recipe => recipe.comments.forEach(comment => { 
-      return commentService.fetchComment(comment);
-    }))
-    .then( comment => this.commentArr.push(comment))
+    .then( recipe => this.recipe = recipe.data)
+    .then( () => {
+      if (this.recipe.comments.length !== 0) {
+        this.recipe.comments.forEach(commentID => {
+          commentService.fetchComment(commentID)
+          .then(res => this.commentArr.push(res.comment))
+        });
+      }
+    })
     .catch(err => $log.error(err.message));
   };
-  
-  this.updateRecipeView();
+
+  this.$onChanges = function() {
+    $log.debug('RecipeItemController.$onInit()');
+
+    this.updateRecipeView();
+  };
+  // this.updateRecipeView();
 
 
   this.deleteRecipe = function() {
@@ -42,5 +54,3 @@ function RecipeItemController($log, recipeService, commentService) {
 
   };
 }
-
-

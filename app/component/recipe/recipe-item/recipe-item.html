@@ -25,6 +25,7 @@
       <h3>Cook Time</h3>
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
+     <on-changes recipeItemCtrl.recipe></on-changes>
      <create-comment on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
     <ul>
      ---------------------{{ recipeItemCtrl.commentArr}}--------------
@@ -33,6 +34,6 @@
   </section>
 
    <upload-pic recipe="recipeItemCtrl.recipe"></upload-pic>
-   <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe> 
-   <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button> 
+   <edit-recipe recipe="recipeItemCtrl.recipe"></edit-recipe>
+   <button ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
 </section>
