@@ -4,7 +4,7 @@ require('./_edit-profile.scss');
 
 module.exports = {
   template: require('./edit-profile.html'),
-  controller: ['$log', 'profileService', 'picService', EditProfileController],
+  controller: ['$log', '$window', 'profileService', 'picService', EditProfileController],
   controllerAs: 'editProfileCtrl',
   bindings: {
     profile: '<',
@@ -13,9 +13,9 @@ module.exports = {
 };
 
 
-function EditProfileController($log, profileService, picService) {
+function EditProfileController($log, $window, profileService, picService) {
   $log.debug('EditProfileController');
-
+  
   this.pic = {};
 
   this.editProfile = function() {
@@ -24,10 +24,14 @@ function EditProfileController($log, profileService, picService) {
   };
 
   this.uploadProfilePic = function() {
-    $log.debug('EditProfileController.uploadProfilePic');
+    let location = $window.location;
+
+    $log.debug('THIS PIC', this.pic);
     picService.uploadProfilePic(this.profile, this.pic)
-    .then( () => this.onProfileUpdated())
-    .then( () => this.pic = null);
+    .then( () => {
+      this.pic = null;
+      location.reload(true);
+    });
   };
 
   this.onProfileUpdated = function() {
