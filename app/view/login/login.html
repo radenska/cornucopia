@@ -6,7 +6,9 @@
       'error': loginForm.username.$invalid,
       'success': loginForm.username.$valid
     }">
-      <input type="text"
+      <input
+       class="ignore-valid"
+       type="text"
        name="username"
        placeholder=" "
        ng-minlength="4"
@@ -18,11 +20,13 @@
       'error': loginForm.password.$invalid && loginForm.$submitted,
       'success': loginForm.password.$valid
     }">
-      <input type="password"
-             name="password"
-             placeholder=" "
-             ng-minlength="6"
-             ng-model="loginCtrl.user.password" required>
+      <input
+        class="ignore-valid"
+        type="password"
+        name="password"
+        placeholder=" "
+        ng-minlength="6"
+        ng-model="loginCtrl.user.password" required>
              <label for="password">password</label>
     </div>
     <input type="submit" value="sign in" class="btn-std"

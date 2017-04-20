@@ -5,6 +5,6 @@
     <img ng-src="{{profileViewCtrl.profile.profilePicURI}}">
 
   </div>
-  <button id="edit-button" ng-if="!profileViewCtrl.showEditView" ng-click="profileViewCtrl.showEditView = true">edit your profile</button>
+  <input class="btn-std" value="edit profie" type="submit" id="edit-button" ng-if="!profileViewCtrl.showEditView" ng-click="profileViewCtrl.showEditView = true">
   <edit-profile ng-if="profileViewCtrl.showEditView" on-profile-updated="profileViewCtrl.updateProfileView()" profile="profileViewCtrl.profile"></edit-profile>
 </section>
