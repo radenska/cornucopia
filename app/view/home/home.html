@@ -1,8 +1,9 @@
 <section class="home">
 
+  <div class="tile-container">
+
   <input ng-model="homeCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
-  
-  <div class="container">
+
     <ul>
       <recipe-tile logged-in="homeCtrl.loggedIn" ng-repeat="tile in homeCtrl.allRecipes | recipeSearch: homeCtrl.recipeSearchTerm" recipe="tile"></recipe-tile>
     </ul>

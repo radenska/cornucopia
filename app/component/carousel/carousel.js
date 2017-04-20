@@ -11,12 +11,12 @@ module.exports = {
 function CarouselController($log){
   $log.debug('CarouselController');
 
-  this.interval = 500;
+  this.interval = 3000;
   this.nowrap = false;
   this.active = 0;
 
   // let currentIndex = 0;
-  
+
 
   let img1 = {
     image: 'https://placehold.it/1000x300/0000ff'

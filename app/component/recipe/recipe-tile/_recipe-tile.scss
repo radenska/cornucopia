@@ -17,6 +17,7 @@
     background: rgba(0,0,0, 0.2);
     position: absolute;
     bottom: 0;
+    overflow: hidden;
     span{
      color: white;
      font-size: 125%;
@@ -27,7 +28,7 @@
      padding-right: 30px;
     }
      .desc{
-        color: rgba(255, 255, 255, 0.8)
+        // color: black;
     }
   }
 }
