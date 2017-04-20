@@ -27,6 +27,11 @@ function NavbarController($log, $location, $rootScope, authService) {
     $location.url('/signin');
   };
 
+  this.goHome = function(){
+    $log.debug('NavbarController.goHome()');
+    $location.url('/');
+  };
+
   this.logout = () => {
     $log.debug('NavbarController.logout()');
     authService.logout()
