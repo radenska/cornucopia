@@ -23,12 +23,15 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
   this.fetchAllRecipes = function() {
     $log.debug('HomeController.fetchAllRecipes()');
 
+    recipeService.fetchRecipes()
+    .then(recipes => this.allRecipes = recipes);
   };
-  this.updateRecipeView = function() {
-    $log.debug('HomeController.updateRecipeView()');
 
-    recipeService.fetchMyRecipes(this.myProfile._id)
-    .then(recipes => this.myRecipes = recipes);
+  this.updateAllRecipesView = function() {
+    $log.debug('HomeController.updateAllRecipesView()');
+
+    recipeService.fetchAllRecipes()
+    .then(recipes => this.allRecipes = recipes);
   };
 
   this.fetchProfile();

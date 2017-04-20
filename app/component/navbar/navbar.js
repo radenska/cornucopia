@@ -14,6 +14,9 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.hideLoginBtn = false;
   this.hideSignupBtn = false;
   this.hideLogout = true;
+  this.hideMyRecipesBtn = true;
+  this.hideHomeBtn = true;
+
 
   this.goSignUp = function() {
     $log.debug('NavbarController.goSignUp()');
@@ -30,14 +33,21 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.myRecipes = function() {
     $log.debug('NavbarController.myRecipes()');
 
-    let userID = $window.localStorage.getItem('userID', this.myUserID);
-
+    let userID = $window.localStorage.getItem('userID');
     $location.url(`/myrecipes/${userID}`);
+  };
 
-  this.goHome = function(){
+  this.goHome = function() {
     $log.debug('NavbarController.goHome()');
     $location.url('/');
   };
+
+  this.home = function() {
+    $log.debug('NavbarController.home()');
+
+    let userID = $window.localStorage.getItem('userID')
+    $location.url(`/home/${userID}`);
+  }
 
   this.logout = () => {
     $log.debug('NavbarController.logout()');
@@ -59,6 +69,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideSignupBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
     if (path === `/home`) {
@@ -66,6 +77,16 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideSignupBtn = true;
       this.hideLogout = false;
       this.hideMyRecipesBtn = false;
+      this.hideHomeBtn = true;
+    }
+
+    if (path === '/myrecipes') {
+      this.hideLoginBtn = true;
+      this.hideSignupBtn = true;
+      this.hideLogout = false;
+      this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = false;
+
     }
 
     if (path === '/join') {
@@ -73,6 +94,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideLoginBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
     if (path === '/signin') {
@@ -80,6 +102,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideSignupBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
   };
