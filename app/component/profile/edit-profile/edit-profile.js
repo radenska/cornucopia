@@ -19,7 +19,7 @@ function EditProfileController($log, $window, profileService, picService) {
 
   this.editProfile = function() {
     profileService.editProfile(this.profile._id, this.profile)
-    .then( () => this.onProfileUpdated())
+    .then( () => this.onProfileUpdated());
   };
 
   this.uploadProfilePic = function() {
@@ -30,10 +30,12 @@ function EditProfileController($log, $window, profileService, picService) {
     .then( () => {
       this.pic = null;
       location.reload(true);
+      this.onProfileUpdated();
     });
   };
 
   this.onProfileUpdated = function() {
-
-  }
+    
+  };
 }
+

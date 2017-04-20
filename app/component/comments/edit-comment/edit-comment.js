@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  template: './edit-comment.html',
+  template: require('./edit-comment.html'),
   controller: ['$log', 'commentService', EditCommentController],
   controllerAs: 'editCommentCtrl',
   bindings: {

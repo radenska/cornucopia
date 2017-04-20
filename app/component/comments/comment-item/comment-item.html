@@ -1,11 +1,12 @@
 <section class="commentItem">
+  <on-changes commentItemCtrl.comment></on-changes>
   <div class="current-comment" ng-if="!commentItemCtrl.showEditComment">
-    <span>comment</span>
-    <p> {{commentItemCtrl.comment}} </p>
+    <span>On {{commentItemCtrl.comment.created}}, {{commentItemCtrl.commenter.name}} said: </span>
+    <p> {{commentItemCtrl.comment.comment}} </p>
   </div>
 
   <edit-comment ng-if="commentItemCtrl.showEditComment" comment="commentItemCtrl.comment"></edit-comment>
 
   <button ng-click="commentItemCtrl.showEditComment = !commentItemCtrl.showEditComment"> edit </button>
-  <button ng-click="commentItemCtrl.deleteComment()"> delete </button>
+  <button ng-click="commentItemCtrl.deleteComment(commentItemCtrl.comment)"> delete </button>
 </section>
