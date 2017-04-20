@@ -1,7 +1,11 @@
 <li class="commentItem">
+
   <on-init></on-init>
+  
   <div class="current-comment" ng-if="!commentItemCtrl.showEditComment">
-    <span><div class="profimg"><img src="{{commentItemCtrl.commenter.profilePicURI}}"></div>On {{commentItemCtrl.comment.created}}, {{commentItemCtrl.commenter.name}} said: </span>
+    <span><div class="profimg">
+      <img src="{{commentItemCtrl.commenter.profilePicURI}}">
+    </div>On {{commentItemCtrl.comment.created | date: 'MMM d, y'}}, {{commentItemCtrl.commenter.name}} said: </span>
     <p> {{commentItemCtrl.comment.comment}} </p>
   </div>
   <edit-comment on-comment-edited="commentItemCtrl.updateCommentItemView()" ng-if="commentItemCtrl.loggedIn && commentItemCtrl.showEditComment && commentItemCtrl.profile._id === commentItemCtrl.comment.commenterProfileID" comment="commentItemCtrl.comment"></edit-comment>
