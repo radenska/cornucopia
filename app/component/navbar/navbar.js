@@ -27,6 +27,12 @@ function NavbarController($log, $location, $rootScope, authService) {
     $location.url('/signin');
   };
 
+  this.myRecipes = function() {
+    $log.debug('NavbarController.myRecipes()');
+
+    
+  }
+
   this.logout = () => {
     $log.debug('NavbarController.logout()');
     authService.logout()
