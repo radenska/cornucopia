@@ -1,32 +1,35 @@
 <section class='signup-form'>
-  <h2>sign up</h2>
-  <form name="signupForm"
-        ng-submit="signupCtrl.signup(signupCtrl.user)"
-        novalidate>
-   <input class="input-std"
-           type="text"
-           name="name"
-           placeholder="username (required)"
-           ng-minlength="4"
-           ng-model="signupCtrl.user.username" required>
-  <span ng-show="signupForm.name.$invalid && signupForm.name.$touched">Please enter a username that is at least four characters long!</span>
-  <input class="input-std"
-  name="email"
-  type="email"
-  placeholder="email"
-  ng-model="signupCtrl.user.email" required>
-  <span ng-show="signupForm.email.$invalid && signupForm.email.$touched">Please enter a valid email address!</span>
-   <input class="input-std"
-           type="password"
-           name="password"
-           placeholder="password (required)"
-           ng-minlength="6"
-           ng-model="signupCtrl.user.password"
-           required>
-    <span ng-show="signupForm.password.$invalid && signupForm.password.$touched">Please enter a password that is at least six characters long!</span>
-    <input type="submit"
-           class="btn-std"
-           value="sign up"
-           ng-disabled="signupForm.name.$invalid || signupForm.password.$invalid || signupForm.email.$invalid">
-  </form>
+    <h2>sign up</h2>
+    <form name="signupForm" novalidate ng-submit="signupCtrl.signup(signupCtrl.user)">
+
+        <div>
+
+          <input class="input-std verify" name="name" ng-model="signupCtrl.user.username" type="text" placeholder=" " required pattern=".{4,}">
+            <label for="name">Username</label>
+            <div class="requirements">
+                Must be at least 4 characters
+            </div>
+        </div>
+
+
+        <div>
+            <input class="input-std verify" name="email" ng-model="signupCtrl.user.email" type="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+            <div class="requirements">
+                Must be a valid email address
+            </div>
+        </div>
+        <div>
+
+            <input class="input-std verify" type="password" name="password" ng-model="signupCtrl.user.password" placeholder="  " ng-minlength="6"
+            pattern=".{6,}"
+            required>
+            <label for="password">Password</label>
+            <div class="requirements">
+                Your password must be at least 6 characters
+            </div>
+        </div>
+
+        <input type="submit" class="btn-std" value="sign up" ng-disabled="signupForm.name.$invalid || signupForm.password.$invalid || signupForm.email.$invalid">
+    </form>
 </section>

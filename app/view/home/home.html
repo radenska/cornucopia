@@ -1,14 +1,13 @@
 <section class="home">
   <div class="container">
-    <profile-view on-profile-updated="homeCtrl.updateProfileView()" profile="homeCtrl.myProfile"></profile-view>
+    <!-- <<prof></prof>ile-view on-profile-updated="homeCtrl.updateProfileView()" profile="homeCtrl.myProfile"></profile-view> -->
     <create-recipe on-recipe-created="homeCtrl.updateRecipeView()" profile="homeCtrl.myProfile"></create-recipe>
-    <ul>
+
       <recipe-item
         ng-repeat="item in homeCtrl.myRecipes.recipes"
         on-recipe-deleted="homeCtrl.updateRecipeView()"
         recipe="item">
       </recipe-item>
-      <!-- <recipe-tile ng-repeat="tile in homeCtrl.allRecipes" recipe="tile"></recipe-tile> -->
-    </ul>
+      <recipe-tile ng-repeat="tile in homeCtrl.allRecipes" recipe="tile"></recipe-tile>
   </div>
 </section>
