@@ -108,7 +108,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
     }
 
     if (path === '/join') {
-      this.hideSignupBtn = true;
+      this.hideSignupBtn = false;
       this.hideLoginBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;
@@ -116,7 +116,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
     }
 
     if (path === '/signin') {
-      this.hideLoginBtn = true;
+      this.hideLoginBtn = false;
       this.hideSignupBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;

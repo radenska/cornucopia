@@ -1,7 +1,7 @@
 <li class="recipe-item">
   <button ng-click="recipeItemCtrl.backToTiles()">back to recipes</button>
   <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
-  <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="altimage">
+  <img src="{{recipeItemCtrl.recipe.recipePicURI}}" alt="altimage">
   <div class="description-container">
     <h2 class="recipe-name"> {{recipeItemCtrl.recipe.recipeName}}</h2>
     <p>{{recipeItemCtrl.recipe.description}}</p>
@@ -28,7 +28,7 @@
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
      <on-changes recipeItemCtrl.recipe></on-changes>
-     <div>Recipe posted by {{recipeItemCtrl.profile.name}}<div class="profimg"><img src="{{recipeItemCtrl.profilePic}}"></div></div>
+     <div>Recipe posted by {{recipeItemCtrl.profileName}}<div class="profimg"><img src="{{recipeItemCtrl.profilePic}}"></div></div>
     <div>
       <h3 ng-hide="recipeItemCtrl.commentArr.length === 0"> Comments</h3>
      <ul>
@@ -37,7 +37,7 @@
    </div>
      <button ng-if="recipeItemCtrl.loggedIn && !recipeItemCtrl.showCommentField" ng-click="recipeItemCtrl.showCommentField = true"></button>
      <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.showCommentField" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
-     <upload-pic ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
-     <edit-recipe ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
+     <upload-pic on-pic-uploaded="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
+     <edit-recipe on-edit-recipe="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
      <button ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
 </li>
