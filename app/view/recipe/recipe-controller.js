@@ -34,4 +34,5 @@ function RecipeController($log, $window, $location, $stateParams, authService, r
 
   this.getRecipe();
   this.loginStatus();
+
 }
