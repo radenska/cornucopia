@@ -33,7 +33,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.myRecipes = function() {
     $log.debug('NavbarController.myRecipes()');
 
-    let userID = $window.localStorage.getItem('userID');
+    let userID = JSON.parse($window.localStorage.getItem('userID'));
     $location.url(`/myrecipes/${userID}`);
   };
 
@@ -45,7 +45,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.home = function() {
     $log.debug('NavbarController.home()');
 
-    let userID = $window.localStorage.getItem('userID')
+    let userID = JSON.parse($window.localStorage.getItem('userID'));
     $location.url(`/home/${userID}`);
   }
 

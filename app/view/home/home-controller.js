@@ -5,10 +5,9 @@ require('./_home.scss');
 module.exports = ['$log', '$rootScope', '$stateParams', 'profileService', 'recipeService', HomeController];
 
 function HomeController($log, $rootScope, $stateParams, profileService, recipeService) {
-  $log.debug('HomeController', this);
+  $log.debug('HomeController');
 
   this.myUserID = $stateParams.userID;
-
   this.loggedIn = true;
 
   this.fetchProfile = function() {
@@ -30,10 +29,9 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
   this.updateAllRecipesView = function() {
     $log.debug('HomeController.updateAllRecipesView()');
 
-    recipeService.fetchAllRecipes()
-    .then(recipes => this.allRecipes = recipes);
+    this.fetchAllRecipes();
   };
 
   this.fetchProfile();
-
+  this.fetchAllRecipes();
 }

@@ -4,25 +4,43 @@ require('./_recipe-item.scss');
 
 module.exports = {
   template: require('./recipe-item.html'),
-  controller: ['$log', 'recipeService','commentService', RecipeItemController],
+  controller: ['$log', '$window', '$stateParams', 'recipeService','commentService', 'profileService', RecipeItemController],
   controllerAs: 'recipeItemCtrl',
   bindings: {
-    recipe: '<',
     onRecipeDeleted: '&',
     comment: '<',
     loggedIn: '<'
   }
 };
 
-function RecipeItemController($log, recipeService, commentService) {
+function RecipeItemController($log, $window, $stateParams, recipeService, commentService, profileService) {
   $log.debug('RecipeItemController');
+
+  this.recipeID = $stateParams.recipeID;
+
+  this.isThisMyRecipe = function() {
+    $log.debug('RecipeItemController.isThisMyRecipe()');
+
+    this.userID = $window.localStorage.getItem('userID');
+
+    if (!this.userID) return false;
+
+    recipeService.fetchRecipe(this.recipeID)
+    .then(response => this.recipe = response.data)
+    .then( () => profileService.fetchProfile(this.userID))
+    .then(profile => {
+      if (profile._id === this.recipe.profileID) return true;
+      return false;
+    })
+    .catch( () => false);
+  };
 
   this.updateRecipeView = function(){
     $log.debug('RecipeItemController.updateRecipe');
 
     this.commentArr = [];
 
-    recipeService.fetchRecipe(this.recipe._id)
+    recipeService.fetchRecipe(this.recipeID)
     .then( recipe => this.recipe = recipe.data)
     .then( () => {
       if (this.recipe.comments.length !== 0) {
@@ -35,11 +53,9 @@ function RecipeItemController($log, recipeService, commentService) {
     .catch(err => $log.error(err.message));
   };
 
-  this.$onChanges = function() {
-    $log.debug('RecipeItemController.$onInit()');
 
-    this.updateRecipeView();
-  };
+  this.myRecipe = this.isThisMyRecipe();
+  this.updateRecipeView();
 
   this.deleteRecipe = function() {
     $log.debug('RecipeItemController.deleteRecipe');

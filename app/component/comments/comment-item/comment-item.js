@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', 'commentService', 'profileService', CommentItemController],
   controllerAs: 'commentItemCtrl',
   bindings: {
-    comment: '<'
+    comment: '<',
+    loggedIn: '<'
   }
 };
 

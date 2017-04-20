@@ -15,7 +15,7 @@ function RecipeTileController($log, $location, recipeService) {
   $log.debug('RecipeTileController');
 
   this.goToRecipe = function() {
-    $log.debug('RecipeTileController.goToRecipe()', this.recipe);
+    $log.debug('RecipeTileController.goToRecipe()');
 
     $location.url(`/recipe/${this.recipe._id}`)
   };
