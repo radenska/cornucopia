@@ -11,13 +11,6 @@ module.exports = {
 function NavbarController($log, $window, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
-  // this.hideLoginBtn = false;
-  // this.hideSignupBtn = false;
-  // this.hideLogout = true;
-  // this.hideMyRecipesBtn = true;
-  // this.hideHomeBtn = true;
-
-
   this.goSignUp = function() {
     $log.debug('NavbarController.goSignUp()');
 
