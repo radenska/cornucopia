@@ -1,7 +1,9 @@
 <li ng-click="recipeTileCtrl.goToRecipe()" class="recipe-tile">
-  <div class="span-container" style="src:{{recipeTileCtrl.recipe.recipePicURI}}">
-    <a href="/recipe/{{recipeTileCtrl.recipe._id}}">link</a>
+ <img src="{{recipeTileCtrl.recipe.recipePicURI}}" alt="">
+  <div class="span-container">
+    <a href="/recipe/{{recipeTileCtrl.recipe._id}}">
     <span class="name">{{recipeTileCtrl.recipe.recipeName}}</span>
     <span class="desc">{{recipeTileCtrl.recipe.description}}</span>
+  </a>
   </div>
 </li>
