@@ -1,10 +1,7 @@
 <section class="create-comment">
-
-  <form action=""
-        ng-submit="createCommentCtrl.createComment()" novalidate>
-    {{ createCommentCtrl.mycomment }}
+  <form ng-submit="createCommentCtrl.createComment()" novalidate>
     <legend>create comment</legend>
-    <textarea ng-model="createCommentCtrl.comment" placeholder="comment"></textarea>
+    <textarea class="areaStyled" ng-model="createCommentCtrl.comment" placeholder="comment"></textarea>
 
     <button>submit</button>
   </form>
