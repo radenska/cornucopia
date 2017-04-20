@@ -28,10 +28,11 @@
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
      <on-changes recipeItemCtrl.recipe></on-changes>
-
+    <div>
      <ul>
        <comment-item on-comment-change="recipeItemCtrl.updateRecipeView()" profile="recipeItemCtrl.profile" logged-in="recipeItemCtrl.loggedIn" ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
      </ul>
+   </div>
      <button ng-if="recipeItemCtrl.loggedIn && !recipeItemCtrl.showCommentField" ng-click="recipeItemCtrl.showCommentField = true"></button>
      <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.showCommentField" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
      <upload-pic ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>

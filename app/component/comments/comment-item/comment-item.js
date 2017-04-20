@@ -24,17 +24,22 @@ function CommentItemController($log, commentService, profileService){
     .then(this.onCommentChange());
   };
 
-  this.commenter = function(profileID) {
-    $log.debug('CommentItemController.commenter', profileID)
+  this.commenter = function() {
+    $log.debug('CommentItemController.commenter', this.comment.commenterProfileID)
 
-    profileService.fetchProfile2(profileID)
+    profileService.fetchProfile2(this.comment.commenterProfileID)
     .then(profile => this.commenter = profile);
   };
+
+  this.$onInit = function() {
+    $log.debug('CommentItemController.$onInit()')
+    if (this.comment) return this.commenter();
+    return this.onCommentChange();
+  }
 
   this.updateCommentItemView = function() {
     $log.debug('CommentItemController.updateCommentItemView', this.comment);
 
-    this.commenter(this.comment.commenterProfileID);
     this.onCommentChange();
   };
 
