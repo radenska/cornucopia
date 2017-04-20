@@ -3,9 +3,9 @@
   margin-left: 5%;
   background-color: white;
   width: 50%;
-  height: 100px;
+  // height: 100px;
   border: 1px solid black;
-  
+
   button {
     // margin-top: 6%;
     // margin-left: 2%;
@@ -17,12 +17,21 @@
     &.first {
       margin-left: 55%;
     }
-    
-    
+
+
     &:hover {
       background-color: white;
       border: 1px solid orange;
       color: orange;
     }
   }
+}
+
+.profimg {
+  padding: 0;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px solid black;
 }

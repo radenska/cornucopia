@@ -6,7 +6,6 @@ function recipeService($q, $log, $http, $window, authService) {
   $log.debug('recipeService');
 
   let service = {};
-  // service.recipes = [];
 
   service.createRecipe = function(recipe) {
     $log.debug('recipeService.createRecipe()');
@@ -25,7 +24,6 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .then( res => {
       $log.log('recipe created', res.data);
-      // service.recipes.unshift(res.data.recipe);
       return res.data.recipe;
     })
     .catch( err => {
@@ -49,7 +47,6 @@ function recipeService($q, $log, $http, $window, authService) {
     return $http.get(url, config)
     .then( recipe => {
       $log.log('recipe retrieved', recipe);
-      // service.recipe = res.data;
       return recipe;
     })
     .catch( err => {
@@ -120,14 +117,12 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .then( res => {
       $log.log('recipes updated');
-      for (let i = 0; i < service.recipes.length; i++) {
-        let current = service.recipes[i];
-        if (current._id === recipeID) {
-          current = res.data;
-          break;
-        }
-      }
-      return res.data
+      return res.data;
+      // for (let i = 0; i < service.recipes.length; i++) {
+      //   let current = service.recipes[i];
+      //   if (current._id === recipeID) {
+      //     current = res.data;
+          // break;
     })
     .catch( err => {
       $log.error(err.message);
@@ -151,13 +146,6 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .then( res => {
       $log.log('recipes deleted');
-      for (let i = 0; i < service.recipes.length; i++) {
-        let current = service.recipes[i];
-        if (current._id === recipeID){
-          service.recipes.splice(i, 1);
-          break;
-        }
-      }
       return res.data;
     })
     .catch( err => {

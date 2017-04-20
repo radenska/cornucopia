@@ -6,7 +6,8 @@ module.exports = {
   controllerAs: 'editCommentCtrl',
   bindings: {
     comment: '<',
-    loggedIn: '<'
+    loggedIn: '<',
+    onCommentEdited: '&',
   }
 };
 
@@ -15,6 +16,10 @@ function EditCommentController($log, commentService){
   $log.debug('EditCommentController');
 
   this.editComment = function(){
-    commentService.updateComment(this.comment._id, this.comment);
+    let commentData = {
+      comment: this.commentUpdate
+    };
+    commentService.updateComment(this.comment._id, commentData)
+    .then( () => this.onCommentEdited());
   };
 }

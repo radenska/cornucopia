@@ -11,11 +11,11 @@ module.exports = {
 function NavbarController($log, $window, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
-  this.hideLoginBtn = false;
-  this.hideSignupBtn = false;
-  this.hideLogout = true;
-  this.hideMyRecipesBtn = true;
-  this.hideHomeBtn = true;
+  // this.hideLoginBtn = false;
+  // this.hideSignupBtn = false;
+  // this.hideLogout = true;
+  // this.hideMyRecipesBtn = true;
+  // this.hideHomeBtn = true;
 
 
   this.goSignUp = function() {
@@ -33,7 +33,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.myRecipes = function() {
     $log.debug('NavbarController.myRecipes()');
 
-    let userID = JSON.parse($window.localStorage.getItem('userID'));
+    let userID = $window.localStorage.getItem('userID');
     $location.url(`/myrecipes/${userID}`);
   };
 
@@ -45,7 +45,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
   this.home = function() {
     $log.debug('NavbarController.home()');
 
-    let userID = JSON.parse($window.localStorage.getItem('userID'));
+    let userID = $window.localStorage.getItem('userID');
     $location.url(`/home/${userID}`);
   }
 
@@ -86,6 +86,24 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideLogout = false;
       this.hideMyRecipesBtn = true;
       this.hideHomeBtn = false;
+    }
+
+    if (path === '/recipe') {
+      authService.getToken()
+      .then( () => {
+        this.hideLoginBtn = true;
+        this.hideSignupBtn = true;
+        this.hideLogout = false;
+        this.hideMyRecipesBtn = true;
+        this.hideHomeBtn = false;
+      })
+      .catch( () => {
+        this.hideLoginBtn = false;
+        this.hideSignupBtn = false;
+        this.hideLogout = true;
+        this.hideMyRecipesBtn = true;
+        this.hideHomeBtn = true;
+      })
 
     }
 
