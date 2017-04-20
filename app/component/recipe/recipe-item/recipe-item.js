@@ -4,7 +4,7 @@ require('./_recipe-item.scss');
 
 module.exports = {
   template: require('./recipe-item.html'),
-  controller: ['$log', '$window', '$stateParams', 'recipeService','commentService', 'profileService', RecipeItemController],
+  controller: ['$log', '$window', '$location', '$stateParams', 'recipeService','commentService', 'profileService', RecipeItemController],
   controllerAs: 'recipeItemCtrl',
   bindings: {
     onRecipeDeleted: '&',
@@ -13,7 +13,7 @@ module.exports = {
   }
 };
 
-function RecipeItemController($log, $window, $stateParams, recipeService, commentService, profileService) {
+function RecipeItemController($log, $window, $location, $stateParams, recipeService, commentService, profileService) {
   $log.debug('RecipeItemController');
 
   this.recipeID = $stateParams.recipeID;
@@ -55,7 +55,6 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
     .catch(err => $log.error(err.message));
   };
 
-
   this.myRecipe = this.isThisMyRecipe();
   this.updateRecipeView();
 
@@ -66,6 +65,15 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
 
     recipeService.deleteRecipe(this.recipe._id)
     .then( () => this.onRecipeDeleted());
+  };
 
+  this.backToTiles = function() {
+    $log.debug('RecipeItemController.backToTiles()');
+
+    if (!this.userID) return $location.url('/landing');
+
+    if (!this.myRecipe) return $location.url(`/home/${this.userID}`);
+
+    $location.url(`/myrecipes/${this.userID}`);
   };
 }
