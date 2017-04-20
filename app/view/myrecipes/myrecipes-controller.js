@@ -9,7 +9,8 @@ function MyrecipesController($log, $rootScope, $stateParams, profileService, rec
 
   this.myUserID = $stateParams.userID;
   this.loggedIn = true;
-  $log.debug('LOGGED IN', this.loggedIn, this.myUserID);
+
+  this.randomArray = [{recipeName: 'one', description: 'two'}, {recipeName: 'three', description: 'four'}];
 
   this.fetchProfile = function() {
     $log.debug('MyrecipesController.fetchProfile()');
@@ -19,12 +20,12 @@ function MyrecipesController($log, $rootScope, $stateParams, profileService, rec
     .then(prof => this.myProfile = prof);
   };
 
-  // this.updateRecipeView = function() {
-  //   $log.debug('MyrecipesController.updateRecipeView()');
-  //
-  //   recipeService.fetchMyRecipes(this.myProfile._id)
-  //   .then(profile => this.myProfile = profile);
-  // };
+  this.updateRecipeView = function() {
+    $log.debug('MyrecipesController.updateRecipeView()');
+
+    recipeService.fetchMyRecipes(this.myProfile._id)
+    .then(profile => this.myProfile = profile);
+  };
 
   this.fetchProfile();
 }

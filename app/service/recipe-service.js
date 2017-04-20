@@ -47,7 +47,6 @@ function recipeService($q, $log, $http, $window, authService) {
     return $http.get(url, config)
     .then( recipe => {
       $log.log('recipe retrieved', recipe);
-      // service.recipe = res.data;
       return recipe;
     })
     .catch( err => {
@@ -149,13 +148,13 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .then( res => {
       $log.log('recipes deleted');
-      for (let i = 0; i < service.recipes.length; i++) {
-        let current = service.recipes[i];
-        if (current._id === recipeID){
-          service.recipes.splice(i, 1);
-          break;
-        }
-      }
+      // for (let i = 0; i < service.recipes.length; i++) {
+      //   let current = service.recipes[i];
+      //   if (current._id === recipeID){
+      //     service.recipes.splice(i, 1);
+      //     break;
+      //   }
+      // }
       return res.data;
     })
     .catch( err => {

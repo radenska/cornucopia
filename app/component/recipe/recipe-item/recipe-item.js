@@ -30,10 +30,10 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
     .then( () => profileService.fetchProfile(this.userID))
     .then(profile => {
       this.profile = profile;
-      if (profile._id === this.recipe.profileID) return true;
-      return false;
+      if (profile._id === this.recipe.profileID) return this.myRecipe = true;
+      return this.myRecipe = false;
     })
-    .catch( () => false);
+    .catch( () => this.myRecipe = false);
   };
 
   this.updateRecipeView = function(){
