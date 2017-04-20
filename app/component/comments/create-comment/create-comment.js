@@ -14,8 +14,6 @@ module.exports = {
 function CreateCommentController($log, commentService){
   $log.debug('createCommentController');
 
-  // this.comment = {};
-
   this.createComment = function(){
     let commentData = {
       comment: this.comment

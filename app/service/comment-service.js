@@ -133,9 +133,9 @@ function commentService($q, $log, $window, $http, authService){
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URI__}/api/comment/${commentID}`;
+      let url = `${__API_URL__}/api/comment/${commentID}`;
       let config = {
-        header: {
+        headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`

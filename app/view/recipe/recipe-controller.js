@@ -2,9 +2,9 @@
 
 require('./_recipe.scss');
 
-module.exports = ['$log', '$stateParams', 'authService', 'recipeService', RecipeController];
+module.exports = ['$log', '$window', '$location', '$stateParams', 'authService', 'recipeService', RecipeController];
 
-function RecipeController($log, $stateParams, authService, recipeService) {
+function RecipeController($log, $window, $location, $stateParams, authService, recipeService) {
   $log.debug('RecipeController');
 
   this.recipeID = $stateParams.recipeID;
@@ -22,10 +22,16 @@ function RecipeController($log, $stateParams, authService, recipeService) {
     $log.debug('RecipeController.getRecipe()');
 
     recipeService.fetchRecipe(this.recipeID)
-    .then(recipe => this.recipe = recipe.data)
-    .then( () => $log.debug('RECIPE IN RECIPE CONTROLLER', this.recipe));
+    .then(recipe => this.recipe = recipe.data);
   };
-  
+
+  this.goToRecipeTiles = function() {
+    if (!this.loggedIn) return $location.url('/');
+
+    let userID = $window.localStorage.getItem('userID')
+    return $location.url(`/myrecipes/${userID}`);
+  };
+
   this.getRecipe();
   this.loginStatus();
 

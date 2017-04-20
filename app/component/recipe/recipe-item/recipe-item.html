@@ -1,4 +1,5 @@
-<section class="recipe-item">
+<li class="recipe-item">
+  <button ng-click="recipeItemCtrl.backToTiles()">back to recipes</button>
   <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
   <img src="{{recipeItemCtrl.recipe.imageURI}}" alt="altimage">
   <div class="description-container">
@@ -11,12 +12,13 @@
   <ul>
     <li ng-repeat="ingredient in recipeItemCtrl.recipe.ingredients"> {{ingredient}}</li>
   </ul>
-</section>
+  </section>
   <section class="direction-section">
     <h2>Directions</h2>
     <ul>
       <li ng-repeat="instruction in recipeItemCtrl.recipe.instructions"> {{instruction}}</li>
     </ul>
+  </section>
     <div class="time-container">
       <h3>Prep Time</h3>
       <span>{{recipeItemCtrl.recipe.prepTime}}</span>
@@ -26,17 +28,16 @@
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
      <on-changes recipeItemCtrl.recipe></on-changes>
-     recipeItemCtrl.loggedIn---{{recipeItemCtrl.loggedIn}}---recipeItemCtrl.loggedIn
-     recipeItemCtrl.myRecipe---{{recipeItemCtrl.myRecipe}}---recipeItemCtrl.myRecipe
-
-     <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
-    <ul>
-      <comment-item logged-in="recipeItemCtrl.loggedIn" ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
-    </ul>
-  </section>
-
-   <upload-pic ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
-   <edit-recipe ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
-   <button ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
-
-</section>
+     <div>Recipe posted by {{recipeItemCtrl.profile.name}}<div class="profimg"><img src="{{recipeItemCtrl.profilePic}}"></div></div>
+    <div>
+      <h3 ng-hide="recipeItemCtrl.commentArr.length === 0"> Comments</h3>
+     <ul>
+       <comment-item on-comment-change="recipeItemCtrl.updateRecipeView()" profile="recipeItemCtrl.profile" logged-in="recipeItemCtrl.loggedIn" ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
+     </ul>
+   </div>
+     <button ng-if="recipeItemCtrl.loggedIn && !recipeItemCtrl.showCommentField" ng-click="recipeItemCtrl.showCommentField = true"></button>
+     <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.showCommentField" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
+     <upload-pic ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
+     <edit-recipe ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
+     <button ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+</li>
