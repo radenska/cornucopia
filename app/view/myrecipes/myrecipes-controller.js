@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = ['$log', '$rootScope', '$stateParams', 'profileService', 'recipeService', MyrecipesController];
+module.exports = ['$log', '$window', '$rootScope', '$stateParams', 'profileService', 'recipeService', MyrecipesController];
 
-function MyrecipesController($log, $rootScope, $stateParams, profileService, recipeService) {
-  $log.debug('MyrecipesController', this);
+function MyrecipesController($log, $window, $rootScope, $stateParams, profileService, recipeService) {
+  $log.debug('MyrecipesController');
 
-  this.myUserID = $stateParams.userID;
+  this.myUserID = $window.localStorage.getItem('userID');
   this.loggedIn = true;
 
   this.fetchProfile = function() {

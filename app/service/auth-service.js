@@ -80,6 +80,7 @@ function authService($q, $log, $http, $window) {
     $log.debug('authService.logout');
 
     $window.localStorage.removeItem('token');
+    $window.localStorage.removeItem('userID')
     token = null;
     return $q.resolve();
   };

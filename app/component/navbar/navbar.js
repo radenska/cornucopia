@@ -4,11 +4,11 @@ require('./_navbar.scss');
 
 module.exports = {
   template: require('./navbar.html'),
-  controller: ['$log', '$location', '$rootScope', 'authService', NavbarController],
+  controller: ['$log', '$window', '$location', '$rootScope', 'authService', NavbarController],
   controllerAs: 'navbarCtrl'
 };
 
-function NavbarController($log, $location, $rootScope, authService) {
+function NavbarController($log, $window, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
   this.hideLoginBtn = false;
@@ -30,8 +30,10 @@ function NavbarController($log, $location, $rootScope, authService) {
   this.myRecipes = function() {
     $log.debug('NavbarController.myRecipes()');
 
-    
-  }
+    let userID = $window.localStorage.getItem('userID', this.myUserID);
+
+    $location.url(`/myrecipes/${userID}`);
+  };
 
   this.logout = () => {
     $log.debug('NavbarController.logout()');

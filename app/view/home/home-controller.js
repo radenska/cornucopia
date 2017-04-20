@@ -8,6 +8,7 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
   $log.debug('HomeController', this);
 
   this.myUserID = $stateParams.userID;
+
   this.loggedIn = true;
 
   this.fetchProfile = function() {
@@ -19,6 +20,10 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
     .then(recipes => this.myRecipes = recipes);
   };
 
+  this.fetchAllRecipes = function() {
+    $log.debug('HomeController.fetchAllRecipes()');
+
+  };
   this.updateRecipeView = function() {
     $log.debug('HomeController.updateRecipeView()');
 

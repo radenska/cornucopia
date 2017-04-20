@@ -1,25 +1,10 @@
-function HomeController($log, $rootScope, $stateParams, profileService, recipeService) {
-  $log.debug('HomeController', this);
+<section class="myrecipes">
+  <profile-view on-profile-updated="myrecipesCtrl.updateProfileView()" profile="myrecipesCtrl.myProfile"></profile-view>
+  <create-recipe on-recipe-created="myrecipesCtrl.updateRecipeView()" profile="myrecipesCtrl.myProfile"></create-recipe>
+  <recipe-tile ng-repeat="item in myrecipesCtrl.myrecipess.recipes"
+               logged-in="myrecipesCtrl.loggedIn"
+               on-recipe-deleted="myrecipesCtrl.updateRecipeView()"
+               recipe="item">
 
-  this.myUserID = $stateParams.userID;
-  this.loggedIn = true;
-
-  this.fetchProfile = function() {
-    $log.debug('HomeController.fetchProfile()');
-
-    profileService.fetchProfile(this.myUserID)
-    .then(profile => this.myProfile = profile)
-    .then( () => recipeService.fetchMyRecipes(this.myProfile._id))
-    .then(recipes => this.myRecipes = recipes);
-  };
-
-  this.updateRecipeView = function() {
-    $log.debug('HomeController.updateRecipeView()');
-
-    recipeService.fetchMyRecipes(this.myProfile._id)
-    .then(recipes => this.myRecipes = recipes);
-  };
-
-  this.fetchProfile();
-
-}
+  </recipe-tile>
+</section>
