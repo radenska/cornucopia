@@ -22,12 +22,6 @@ function LandingController($log, $location, $rootScope, authService, recipeServi
     });
   };
 
-  this.recipeDeleteDone = function(recipe) {
-    if (this.currentRecipe._id === recipe._id) {
-      this.currentRecipe = null;
-    };
-  };
-
   this.fetchRecipes();
 
   $rootScope.$on('$locationChangeSuccess', () => {
