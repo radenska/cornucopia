@@ -46,24 +46,28 @@ function NavbarController($log, $location, $rootScope, authService) {
       this.hideLoginBtn = false;
       this.hideSignupBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
     }
 
     if (path === `/home`) {
       this.hideLoginBtn = true;
       this.hideSignupBtn = true;
       this.hideLogout = false;
+      this.hideMyRecipesBtn = false;
     }
 
     if (path === '/join') {
       this.hideSignupBtn = true;
       this.hideLoginBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
     }
 
     if (path === '/signin') {
       this.hideLoginBtn = true;
       this.hideSignupBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
     }
 
   };

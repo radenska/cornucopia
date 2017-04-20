@@ -2,6 +2,7 @@
   <div class="container">
     <profile-view on-profile-updated="homeCtrl.updateProfileView()" profile="homeCtrl.myProfile"></profile-view>
     <create-recipe on-recipe-created="homeCtrl.updateRecipeView()" profile="homeCtrl.myProfile"></create-recipe>
+    <my-recipes></my-recipes>
     <ul>
       <recipe-item
         logged-in="homeCtrl.loggedIn"
@@ -9,8 +10,6 @@
         on-recipe-deleted="homeCtrl.updateRecipeView()"
         recipe="item">
       </recipe-item>
-
-
       <!-- <recipe-tile ng-repeat="tile in homeCtrl.allRecipes" recipe="tile"></recipe-tile> -->
     </ul>
   </div>
