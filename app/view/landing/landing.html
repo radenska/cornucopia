@@ -3,14 +3,14 @@
   <!--<carousel></carousel>-->
 
 
-     <input ng-model="landingCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
-
+  <input ng-model="landingCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
 
   <div class="recipe-item-container">
     <ul>
       <recipe-item
         ng-repeat="item in landingCtrl.recipes | recipeSearch: landingCtrl.recipeSearchTerm | limitTo: 1"
         recipe="item"
+        ng-click="landingCtrl.currentRecipe = item"
         >
       </recipe-item>
     </ul>
@@ -19,5 +19,5 @@
   <section class="carousel">
     <h2>Bullshit Carousel Text</h2>
   </section> -->
-<pub-recipe logged-in="landingCtrl.loggedIn"></pub-recipe>
+<!--<pub-recipe logged-in="landingCtrl.loggedIn"></pub-recipe>-->
 </section>
