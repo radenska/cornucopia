@@ -1,8 +1,5 @@
 .car {
-  display: inline-block;
+  position: relative;
   height: 305px;
-
-  img {
-    margin: auto;
-  }
+  margin: 0 auto;
 }
