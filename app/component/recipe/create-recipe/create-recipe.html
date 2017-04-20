@@ -7,95 +7,77 @@
           novalidate>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="name"
              type="text"
-             placeholder="recipe name"
+             placeholder=" "
              ng-minlength="4"
              ng-model="createRecipeCtrl.recipe.recipeName" required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="name">Recipe Name</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="desc"
              type="text"
-             placeholder="recipe description"
+             placeholder=" "
              ng-minlength="4"
              ng-model="createRecipeCtrl.recipe.description" required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="desc">Description</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="ingredients"
              type="text"
-             placeholder="ingredients"
+             placeholder=" "
              ng-minlength="2"
              ng-model="createRecipeCtrl.recipe.ingredients" ng-list required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="ingredients">Ingredient 1, Ingredient2, ect...</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="instructions"
              type="text"
-             placeholder="instructions"
+             placeholder=" "
              ng-minlength="2"
              ng-model="createRecipeCtrl.recipe.instructions" ng-list required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="instruction">Direction 1, Direction 2, ect...</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="prep"
              type="text"
-             placeholder="preparation time (minutes)"
+             placeholder=" "
              ng-minlength="1"
              ng-model="createRecipeCtrl.recipe.prepTime" required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="prep">Prep Time (5 mins)</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="cook"
              type="text"
-             placeholder="cook time (minutes)"
+             placeholder=" "
              ng-minlength="1"
              ng-model="createRecipeCtrl.recipe.cookTime" required>
-      <label for=""></label>
-      <div class="requirements">
-
-      </div>
+      <label for="cook">Cook Time (20 mins)</label>
     </div>
 
       <div>
-      <input class="input-std"
+      <input class="input-std ignore-valid"
              name="cats"
              type="text"
-             placeholder="categories"
+             placeholder=" "
              ng-minlength="1"
              ng-model="createRecipeCtrl.recipe.categories" required>
-    </div>
-      <label for=""></label>
+      <label for="cats">Mexican, Indian, ect...</label>
       <div class="requirements">
 
       </div>
+    </div>
       <input type="submit"
              class="btn-std"
              value="save recipe"

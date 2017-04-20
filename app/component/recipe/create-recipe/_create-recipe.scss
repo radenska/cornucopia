@@ -7,6 +7,12 @@
         width: 85%;
         margin-left: auto;
         margin-right: auto;
+        &:valid{
+          background-color: #eee !important;
+        }
+      }
+      label{
+        left: 15%;
       }
     }
     input{
