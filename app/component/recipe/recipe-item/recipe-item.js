@@ -44,6 +44,11 @@ function RecipeItemController($log, $window, $location, $stateParams, recipeServ
 
     recipeService.fetchRecipe(this.recipeID)
     .then( recipe => this.recipe = recipe.data)
+    .then( () => profileService.fetchProfile2(this.recipe.profileID))
+    .then(profile => {
+      this.profilePic = profile.profilePicURI;
+      this.profileName = profile.name;
+    })
     .then( () => {
       if (this.recipe.comments.length !== 0) {
         this.recipe.comments.forEach(commentID => {
