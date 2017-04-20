@@ -9,10 +9,9 @@
   <div class="recipe-item-container">
     <ul>
       <recipe-item
-        ng-repeat="item in landingCtrl.recipes | recipeSearch: landingCtrl.recipeSearchTerm | limitTo: 10"
+        ng-repeat="item in landingCtrl.recipes | recipeSearch: landingCtrl.recipeSearchTerm | limitTo: 1"
         recipe="item"
-        delete-done="landingCtrl.recipeDeleteDone(recipeData)"
-        ng-click="landingCtrl.currentRecipe = item">
+        >
       </recipe-item>
     </ul>
   </div>
