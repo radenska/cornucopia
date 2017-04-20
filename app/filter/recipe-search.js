@@ -3,9 +3,10 @@
 module.exports = function() {
   return function(recipe, searchTerm) {
     let fuzzyRegex = generateFuzzyRegex(searchTerm);
+    // if(!recipe) return [];
 
     return recipe.filter( recipe => {
-      return fuzzyRegex.test(recipe.name.toUpperCase());
+      return fuzzyRegex.test(recipe.recipeName.toUpperCase());
     });
   };
 };

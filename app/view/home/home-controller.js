@@ -34,4 +34,20 @@ function HomeController($log, $rootScope, $stateParams, profileService, recipeSe
 
   this.fetchProfile();
   this.fetchAllRecipes();
+
+  this.recipes = [];
+
+  this.fetchRecipes = function() {
+    recipeService.fetchRecipes()
+    .then( recipes => {
+      this.recipes = recipes;
+      this.currentRecipe = recipes[0];
+    });
+  };
+
+  this.fetchRecipes();
+
+  $rootScope.$on('$locationChangeSuccess', () => {
+    this.fetchRecipes();
+  });
 }
