@@ -7,7 +7,8 @@ module.exports = {
   controller: [ '$log', 'picService', UploadPicController],
   controllerAs: 'uploadPicCtrl',
   bindings: {
-    recipe: '<'
+    recipe: '<',
+    onPicUploaded: '&'
   }
 };
 
@@ -20,6 +21,7 @@ function UploadPicController($log, picService) {
     picService.uploadRecipePic(this.recipe, this.pic)
     .then( () => {
       this.pic = null;
+      this.onPicUploaded();
     });
   };
 }
