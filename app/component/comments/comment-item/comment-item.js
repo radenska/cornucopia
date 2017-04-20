@@ -10,7 +10,7 @@ module.exports = {
     comment: '<',
     loggedIn: '<',
     profile: '<',
-    onCommentDeleted: '&',
+    onCommentChange: '&',
   }
 };
 
@@ -20,7 +20,8 @@ function CommentItemController($log, commentService, profileService){
 
   this.deleteComment = function(comment){
     $log.debug('CommentItemController.deleteComment')
-    commentService.deleteComment(comment);
+    commentService.deleteComment(comment)
+    .then( () => this.onCommentChange());
   };
 
   this.commenter = function(profileID) {
@@ -30,11 +31,10 @@ function CommentItemController($log, commentService, profileService){
     .then(profile => this.commenter = profile);
   };
 
-  this.$onChanges = function() {
-    $log.debug('CommentItemController.$onChanges()', this.comment);
+  this.updateCommentItemView = function() {
+    $log.debug('CommentItemController.updateCommentItemView', this.comment);
 
-    this.commenter(this.comment.commenterProfileID);
-    commentService.fetchComment(this.comment._id);
+    this.onCommentChange();
   };
 
 }

@@ -4,7 +4,7 @@
     <span>On {{commentItemCtrl.comment.created}}, {{commentItemCtrl.commenter.name}} said: </span>
     <p> {{commentItemCtrl.comment.comment}} </p>
   </div>
-  <edit-comment ng-if="commentItemCtrl.loggedIn && commentItemCtrl.showEditComment && commentItemCtrl.profile._id === commentItemCtrl.comment.commenterProfileID" comment="commentItemCtrl.comment"></edit-comment>
+  <edit-comment on-comment-edited="commentItemCtrl.updateCommentItemView()" ng-if="commentItemCtrl.loggedIn && commentItemCtrl.showEditComment && commentItemCtrl.profile._id === commentItemCtrl.comment.commenterProfileID" comment="commentItemCtrl.comment"></edit-comment>
   <button ng-if="commentItemCtrl.loggedIn && !commentItemCtrl.showEditComment && commentItemCtrl.profile._id === commentItemCtrl.comment.commenterProfileID" ng-click="commentItemCtrl.showEditComment = !commentItemCtrl.showEditComment"> edit </button>
   <button ng-if="commentItemCtrl.loggedIn && commentItemCtrl.profile._id === commentItemCtrl.comment.commenterProfileID" ng-click="commentItemCtrl.deleteComment(commentItemCtrl.comment)"> delete </button>
 </li>

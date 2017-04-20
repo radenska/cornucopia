@@ -18,7 +18,8 @@ function EditCommentController($log, commentService){
   this.editComment = function(){
     let commentData = {
       comment: this.commentUpdate
-    }
-    commentService.updateComment(this.comment._id, commentData);
+    };
+    commentService.updateComment(this.comment._id, commentData)
+    .then( () => this.onCommentEdited());
   };
 }
