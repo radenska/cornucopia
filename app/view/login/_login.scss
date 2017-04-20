@@ -38,7 +38,7 @@
 
 .ignore-valid{
   &:valid{
-    background: none !important;
+    background: #eee !important;
   }
 }
 
@@ -59,6 +59,7 @@ form {
       position: absolute;
       bottom: calc(50% - 10px);
       left: 20px;
+      margin-bottom: 0;
     }
 
     > input[type="text"],

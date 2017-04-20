@@ -1,29 +1,33 @@
 <section class="login-form">
-  <h2>sign in</h2>
-  <form name="loginForm"
-       ng-submit="loginCtrl.login()" novalidate>
-    <div ng-class="{
-      'error': loginForm.username.$invalid,
-      'success': loginForm.username.$valid
-    }">
-      <input type="text"
-       name="username"
-       placeholder="username"
-       ng-minlength="4"
-       ng-model="loginCtrl.user.username" required>
-    </div>
-    <div ng-class="{
-      'error': loginForm.password.$invalid && loginForm.$submitted,
-      'success': loginForm.password.$valid
-    }">
-      <input type="password"
-             name="password"
-             placeholder="password"
-             ng-minlength="6"
-             ng-model="loginCtrl.user.password" required>
-    </div>
-    <input type="submit" value="sign in" class="btn-std"
-           ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid">
-    <span ng-if="loginCtrl.showLoginError">You have entered an invalid username or password. Please try again.</span>
-  </form>
+
+<form action="#0"
+      ng-submit="loginCtrl.login()">
+  <h2>Sign In</h2>
+  <div>
+    <input
+      class="ignore-valid"
+      type="text"
+      id="first_name"
+      name="username"
+      required
+      ng-model="loginCtrl.user.username"
+      placeholder=" " />
+    <label for="name">Username</label>
+  </div>
+
+  <div>
+    <input
+      class="ignore-valid"
+      type="password"
+      id="password"
+      name="password"
+      required
+      placeholder=" "
+      ng-model="loginCtrl.user.password"/>
+    <label for="password">Password</label>
+  </div>
+
+  <input type="submit" value="Sign Up" />
+
+</form>
 </section>
