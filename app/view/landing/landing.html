@@ -1,18 +1,22 @@
 <section class="landing">
 
-  <carousel></carousel>
+  <!--<carousel></carousel>-->
 
 
+     <input ng-model="landingCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
 
-<!--   <input ng-model="homeCtrl.RecipeSearchTerm" type="text" placeholder="search recipes">
 
   <div class="recipe-item-container">
     <ul>
       <recipe-item
-        ng-repeat="item in landingCtrl.recipes | recipeSearch: landingCtrl.recipeSearchTerm | limitTo: 10">
+        ng-repeat="item in landingCtrl.recipes | recipeSearch: landingCtrl.recipeSearchTerm | limitTo: 10"
+        recipe="item"
+        delete-done="landingCtrl.recipeDeleteDone(recipeData)"
+        ng-click="landingCtrl.currentRecipe = item">
       </recipe-item>
     </ul>
   </div>
+<!--
   <section class="carousel">
     <h2>Bullshit Carousel Text</h2>
   </section> -->
