@@ -33,6 +33,10 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
     let userID = $window.localStorage.getItem('userID', this.myUserID);
 
     $location.url(`/myrecipes/${userID}`);
+
+  this.goHome = function(){
+    $log.debug('NavbarController.goHome()');
+    $location.url('/');
   };
 
   this.logout = () => {
