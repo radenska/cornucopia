@@ -1,10 +1,11 @@
 .login-form{
-  width: 50%;
+  width: 85%;
   margin: auto;
   h2{
       text-align: center;
     }
   form{
+    border: none;
     input{
       display: block;
       width: 60%;
@@ -21,10 +22,14 @@
       color: white;
       font-size: 15px;
       transition: 350ms;
+      line-height: 0;
       &:hover{
         background-color: white;
         color: orange;
         border: 1px solid orange;
+      }
+      label{
+        margin-bottom: 0;
       }
     }
   }
@@ -135,4 +140,12 @@ body {
 }
 * {
   box-sizing: border-box;
+}
+
+.login-form{
+  form{
+    div{
+      border: none;
+    }
+  }
 }
