@@ -5,6 +5,7 @@ header{
   position: relative;
   li{
    list-style: none;
+    cursor: pointer;
     display: inline-block;
     height: 40px;
     width: 120px;
@@ -49,6 +50,7 @@ header{
   h2{
     height: 100px;
     width: 320px;
+    cursor: pointer;
     line-height: 100px;
     font-size: 50px;
     text-align: center;
@@ -61,6 +63,7 @@ header{
 
   }
 }
+
 .carousel{
   height: calc(100vh - 210px);
   background: url(https://s3-us-west-2.amazonaws.com/cornucopiaapp/resize.jpeg);

@@ -1,0 +1,9 @@
+<section>
+  <section class="car">
+      <div uib-carousel interval="carCtrl.interval" active="active">
+        <div uib-slide ng-repeat="slide in carCtrl.slides" index="$index">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+        </div>
+      </div>
+  </section>
+</section>
