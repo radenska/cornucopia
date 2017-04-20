@@ -17,6 +17,20 @@ function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'homeCtrl'
     },
     {
+      name: 'recipe',
+      url: '/recipe/:recipeID',
+      template: require('../view/recipe/recipe.html'),
+      controller: 'RecipeController',
+      controllerAs: 'recipeCtrl'
+    },
+    {
+      name: 'myrecipes',
+      url: '/myrecipes/:userID',
+      template: require('../view/myrecipes/myrecipes.html'),
+      controller: 'MyrecipesController',
+      controllerAs: 'myrecipeCtrl'
+    },
+    {
       name: 'landing',
       url: '/landing',
       template: require('../view/landing/landing.html'),

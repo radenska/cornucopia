@@ -34,13 +34,23 @@ header{
     right: 160px;
 
   }
-  li:nth-child(3){
-    right: 20px;
 
+  li:nth-child(3){
+    right: 160px;
   }
+
   li:nth-child(4){
     right: 20px;
   }
+
+  li:nth-child(5){
+    right: 20px;
+  }
+
+  li:nth-child(6){
+    right: 160px;
+  }
+  
   .pic{
     background: #fff;
     width: 40px;
@@ -66,7 +76,7 @@ header{
 
 .carousel{
   height: calc(100vh - 210px);
-  background: url(https://s3-us-west-2.amazonaws.com/cornucopiaapp/resize.jpeg);
+  background: url(https://static.pexels.com/photos/349609/pexels-photo-349609.jpeg);
   background-size: cover;
   min-height: 500px;
   position: relative;

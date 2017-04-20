@@ -6,7 +6,8 @@ module.exports = {
   controllerAs: 'createCommentCtrl',
   bindings: {
     recipe: '<',
-    onCommentCreated: '&'
+    onCommentCreated: '&',
+    loggedIn: '<'
   }
 };
 

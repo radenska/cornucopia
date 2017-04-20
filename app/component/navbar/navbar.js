@@ -4,16 +4,19 @@ require('./_navbar.scss');
 
 module.exports = {
   template: require('./navbar.html'),
-  controller: ['$log', '$location', '$rootScope', 'authService', NavbarController],
+  controller: ['$log', '$window', '$location', '$rootScope', 'authService', NavbarController],
   controllerAs: 'navbarCtrl'
 };
 
-function NavbarController($log, $location, $rootScope, authService) {
+function NavbarController($log, $window, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
   this.hideLoginBtn = false;
   this.hideSignupBtn = false;
   this.hideLogout = true;
+  this.hideMyRecipesBtn = true;
+  this.hideHomeBtn = true;
+
 
   this.goSignUp = function() {
     $log.debug('NavbarController.goSignUp()');
@@ -27,10 +30,24 @@ function NavbarController($log, $location, $rootScope, authService) {
     $location.url('/signin');
   };
 
-  this.goHome = function(){
+  this.myRecipes = function() {
+    $log.debug('NavbarController.myRecipes()');
+
+    let userID = JSON.parse($window.localStorage.getItem('userID'));
+    $location.url(`/myrecipes/${userID}`);
+  };
+
+  this.goHome = function() {
     $log.debug('NavbarController.goHome()');
     $location.url('/');
   };
+
+  this.home = function() {
+    $log.debug('NavbarController.home()');
+
+    let userID = JSON.parse($window.localStorage.getItem('userID'));
+    $location.url(`/home/${userID}`);
+  }
 
   this.logout = () => {
     $log.debug('NavbarController.logout()');
@@ -51,24 +68,41 @@ function NavbarController($log, $location, $rootScope, authService) {
       this.hideLoginBtn = false;
       this.hideSignupBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
     if (path === `/home`) {
       this.hideLoginBtn = true;
       this.hideSignupBtn = true;
       this.hideLogout = false;
+      this.hideMyRecipesBtn = false;
+      this.hideHomeBtn = true;
+    }
+
+    if (path === '/myrecipes') {
+      this.hideLoginBtn = true;
+      this.hideSignupBtn = true;
+      this.hideLogout = false;
+      this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = false;
+
     }
 
     if (path === '/join') {
       this.hideSignupBtn = true;
       this.hideLoginBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
     if (path === '/signin') {
       this.hideLoginBtn = true;
       this.hideSignupBtn = false;
       this.hideLogout = true;
+      this.hideMyRecipesBtn = true;
+      this.hideHomeBtn = true;
     }
 
   };

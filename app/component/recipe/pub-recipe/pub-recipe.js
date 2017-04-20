@@ -7,7 +7,8 @@ module.exports = {
   controller: ['$log', 'recipeService', PubRecipeController],
   controllerAs: 'pubRecipeCtrl',
   bindings: {
-    recipe: '<'
+    recipe: '<',
+    loggedIn: '<'
   }
 };
 

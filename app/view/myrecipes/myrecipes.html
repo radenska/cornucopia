@@ -1,0 +1,10 @@
+<section class="myrecipes">
+  <profile-view on-profile-updated="myrecipesCtrl.updateProfileView()" profile="myrecipesCtrl.myProfile"></profile-view>
+  <create-recipe on-recipe-created="myrecipesCtrl.updateRecipeView()" profile="myrecipesCtrl.myProfile"></create-recipe>
+  <recipe-tile ng-repeat="item in myrecipesCtrl.myrecipess.recipes"
+               logged-in="myrecipesCtrl.loggedIn"
+               on-recipe-deleted="myrecipesCtrl.updateRecipeView()"
+               recipe="item">
+
+  </recipe-tile>
+</section>

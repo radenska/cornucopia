@@ -1,16 +1,7 @@
 <section class="home">
   <div class="container">
-    <!-- <<prof></prof>ile-view on-profile-updated="homeCtrl.updateProfileView()" profile="homeCtrl.myProfile"></profile-view> -->
-    <create-recipe on-recipe-created="homeCtrl.updateRecipeView()" profile="homeCtrl.myProfile"></create-recipe>
-
-      <recipe-item
-        ng-repeat="item in homeCtrl.myRecipes.recipes"
-        on-recipe-deleted="homeCtrl.updateRecipeView()"
-        recipe="item">
-      </recipe-item>
     <ul>
-      <recipe-tile ng-repeat="tile in homeCtrl.allRecipes" recipe="tile"></recipe-tile>
+      <recipe-tile logged-in="homeCtrl.loggedIn" ng-repeat="tile in homeCtrl.allRecipes" recipe="tile"></recipe-tile>
     </ul>
-
   </div>
 </section>

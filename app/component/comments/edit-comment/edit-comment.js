@@ -5,7 +5,8 @@ module.exports = {
   controller: ['$log', 'commentService', EditCommentController],
   controllerAs: 'editCommentCtrl',
   bindings: {
-    comment: '<'
+    comment: '<',
+    loggedIn: '<'
   }
 };
 

@@ -2,14 +2,31 @@
 
 require('./_recipe.scss');
 
-module.exports = ['$log', '$rootScope', 'recipeService', RecipeController];
+module.exports = ['$log', '$stateParams', 'authService', 'recipeService', RecipeController];
 
-function RecipeController($log, $rootScope, recipeService) {
+function RecipeController($log, $stateParams, authService, recipeService) {
   $log.debug('RecipeController');
 
-  this.fetchRecipe = function(recipe){
-    $log.debug('RecipeController.fetchRecipe()');
+  this.recipeID = $stateParams.recipeID;
 
-    recipeService.fetchRecipe(recipe._id);
+  this.loginStatus = function() {
+    $log.debug('RecipeController.loginStatus()');
+
+    authService.getToken()
+    .then( () => this.loggedIn = true)
+    .catch( () => this.loggedIn = false);
+
   };
+
+  this.getRecipe = function() {
+    $log.debug('RecipeController.getRecipe()');
+
+    recipeService.fetchRecipe(this.recipeID)
+    .then(recipe => this.recipe = recipe.data)
+    .then( () => $log.debug('RECIPE IN RECIPE CONTROLLER', this.recipe));
+  };
+  
+  this.getRecipe();
+  this.loginStatus();
+
 }
