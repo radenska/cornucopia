@@ -39,6 +39,7 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
     $log.debug('RecipeItemController.updateRecipe');
 
     this.commentArr = [];
+    this.showCommentField = false;
 
     recipeService.fetchRecipe(this.recipeID)
     .then( recipe => this.recipe = recipe.data)
