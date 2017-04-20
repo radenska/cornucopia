@@ -4,7 +4,7 @@ require('./_create-recipe.scss');
 
 module.exports = {
   template: require('./create-recipe.html'),
-  controller: ['$log', '$rootScope', 'recipeService', CreateRecipeController],
+  controller: ['$log', '$location', '$rootScope', 'recipeService', CreateRecipeController],
   controllerAs: 'createRecipeCtrl',
   bindings: {
     profile: '<',
@@ -13,15 +13,17 @@ module.exports = {
   }
 };
 
-function CreateRecipeController($log, $rootScope, recipeService) {
+function CreateRecipeController($log, $location, $rootScope, recipeService) {
   $log.debug('CreateRecipeController');
 
   this.createRecipe = function() {
     $log.debug('RecipeItemController.createRecipe()');
 
     recipeService.createRecipe(this.recipe)
-    .then( () => this.onRecipeCreated())
-    .then( () => this.recipe = null);
+    .then(recipe => {
+      this.onRecipeCreated();
+      $location.url(`/recipe/${recipe._id}`);
+    });
   };
 
 }

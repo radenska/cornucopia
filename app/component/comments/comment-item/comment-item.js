@@ -21,7 +21,7 @@ function CommentItemController($log, commentService, profileService){
   this.deleteComment = function(comment){
     $log.debug('CommentItemController.deleteComment')
     commentService.deleteComment(comment)
-    .then( () => this.onCommentChange());
+    .then(this.onCommentChange());
   };
 
   this.commenter = function(profileID) {
@@ -34,6 +34,7 @@ function CommentItemController($log, commentService, profileService){
   this.updateCommentItemView = function() {
     $log.debug('CommentItemController.updateCommentItemView', this.comment);
 
+    this.commenter(this.comment.commenterProfileID);
     this.onCommentChange();
   };
 

@@ -117,14 +117,12 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .then( res => {
       $log.log('recipes updated');
-      for (let i = 0; i < service.recipes.length; i++) {
-        let current = service.recipes[i];
-        if (current._id === recipeID) {
-          current = res.data;
-          break;
-        }
-      }
-      return res.data
+      return res.data;
+      // for (let i = 0; i < service.recipes.length; i++) {
+      //   let current = service.recipes[i];
+      //   if (current._id === recipeID) {
+      //     current = res.data;
+          // break;
     })
     .catch( err => {
       $log.error(err.message);

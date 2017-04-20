@@ -65,7 +65,7 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
     let profileID = this.recipe.profileID;
 
     recipeService.deleteRecipe(this.recipe._id)
-    .then( () => this.onRecipeDeleted({}));
+    .then( () => this.onRecipeDeleted());
 
   };
 }
