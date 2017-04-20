@@ -29,6 +29,7 @@ function RecipeItemController($log, $window, $stateParams, recipeService, commen
     .then(response => this.recipe = response.data)
     .then( () => profileService.fetchProfile(this.userID))
     .then(profile => {
+      this.profile = profile;
       if (profile._id === this.recipe.profileID) return true;
       return false;
     })

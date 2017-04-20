@@ -8,7 +8,9 @@ module.exports = {
   controllerAs: 'commentItemCtrl',
   bindings: {
     comment: '<',
-    loggedIn: '<'
+    loggedIn: '<',
+    profile: '<',
+    onCommentDeleted: '&',
   }
 };
 
@@ -22,16 +24,17 @@ function CommentItemController($log, commentService, profileService){
   };
 
   this.commenter = function(profileID) {
-    $log.debug('CommentItemController.deleteComment', profileID)
+    $log.debug('CommentItemController.commenter', profileID)
 
     profileService.fetchProfile2(profileID)
     .then(profile => this.commenter = profile);
   };
 
   this.$onChanges = function() {
-    $log.debug('CommentItemController.$onInit()', this.comment);
+    $log.debug('CommentItemController.$onChanges()', this.comment);
 
     this.commenter(this.comment.commenterProfileID);
+    commentService.fetchComment(this.comment._id);
   };
 
 }

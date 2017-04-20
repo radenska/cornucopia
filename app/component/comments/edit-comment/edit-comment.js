@@ -6,7 +6,8 @@ module.exports = {
   controllerAs: 'editCommentCtrl',
   bindings: {
     comment: '<',
-    loggedIn: '<'
+    loggedIn: '<',
+    onCommentEdited: '&',
   }
 };
 
