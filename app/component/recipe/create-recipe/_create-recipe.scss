@@ -1,0 +1,26 @@
+.create-recipe{
+  form{
+    div{
+      border: none;
+      input{
+        display: block;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        &:valid{
+          background-color: #eee !important;
+        }
+      }
+      label{
+        left: 15%;
+      }
+    }
+    input{
+      line-height: 0px;
+      display: block;
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

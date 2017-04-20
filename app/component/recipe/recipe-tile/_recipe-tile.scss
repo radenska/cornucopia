@@ -1,9 +1,15 @@
 .recipe-tile{
   width:100vw;
-  height:50vh;
-  background:url(https://static.pexels.com/photos/48726/pexels-photo-48726.jpeg);
+  height:48vh;
+  margin-bottom: 2vh;
+  // background:url();
   background-size: cover;
   position: relative;
+
+  img{
+    height: 100%;
+    width: 100%;
+  }
   .span-container{
     height: 100px;
     width: 100%;
@@ -17,7 +23,8 @@
      display: block;
      height: 40px;
      line-height: 60px;
-     margin-left: 30px;
+     padding-left: 30px;
+     padding-right: 30px;
     }
      .desc{
         color: rgba(255, 255, 255, 0.8)

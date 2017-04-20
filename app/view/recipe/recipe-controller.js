@@ -25,7 +25,8 @@ function RecipeController($log, $stateParams, authService, recipeService) {
     .then(recipe => this.recipe = recipe.data)
     .then( () => $log.debug('RECIPE IN RECIPE CONTROLLER', this.recipe));
   };
-``
+  
   this.getRecipe();
   this.loginStatus();
+
 }
