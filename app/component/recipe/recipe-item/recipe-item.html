@@ -38,11 +38,14 @@
        <comment-item on-comment-change="recipeItemCtrl.updateRecipeView()" profile="recipeItemCtrl.profile" logged-in="recipeItemCtrl.loggedIn" ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
      </ul>
    </div>
-     <input class="btn-std" value="comment" type="submit" ng-if="recipeItemCtrl.loggedIn && !recipeItemCtrl.showCommentField" ng-click="recipeItemCtrl.showCommentField = true">
+     <input class="btn-std commenter-button" value="comment" type="submit" ng-if="recipeItemCtrl.loggedIn && !recipeItemCtrl.showCommentField" ng-click="recipeItemCtrl.showCommentField = true">
      <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.showCommentField" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
      <upload-pic on-pic-uploaded="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
      <edit-recipe on-edit-recipe="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
-     <button ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+     <input class="btn-std commenter-button delete" value="delete" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">
 
-  <input type="submit" class="btn-std" value="recipes" ng-click="recipeItemCtrl.backToTiles()">
+  <input type="submit" class="btn-std commenter-button" value="recipes" ng-click="recipeItemCtrl.backToTiles()">
+  <div class="clearfix">
+
+  </div>
 </li>

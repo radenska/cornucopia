@@ -1,5 +1,7 @@
 'use strict';
 
+require('./_edit-comment.scss');
+
 module.exports = {
   template: require('./edit-comment.html'),
   controller: ['$log', 'commentService', EditCommentController],

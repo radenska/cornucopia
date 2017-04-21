@@ -1,5 +1,5 @@
 <section ng-init="showCreateBtn = true" class="create-recipe">
-  <input class="btn-std" value="add a recipe" type="submit" ng-show="showCreateBtn" ng-click="showCreateBtn = false">
+  <input class="btn-std commenter-button" value="add a recipe" type="submit" ng-show="showCreateBtn" ng-click="showCreateBtn = false">
   <div ng-show="!showCreateBtn" class="add-recipe">
     <form name="createRecipeForm"
           ng-submit="createRecipeCtrl.createRecipe()"
@@ -86,3 +86,4 @@
     </form>
   </div>
 </section>
+<div class="clearfix">
