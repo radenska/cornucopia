@@ -21,10 +21,12 @@ function upvoteService($q, $log, $http, authService) {
           Authorization: `Bearer ${token}`
         }
       };
+
       return $http.post(url, upvote, config);
     })
     .then(res => {
       $log.log('upvote created');
+
       let upvote = res.data;
       service.upvotes.push(upvote);
       return upvote;
@@ -47,6 +49,7 @@ function upvoteService($q, $log, $http, authService) {
           Authorization: `Bearer ${token}`
         }
       };
+
       return $http.delete(url, config);
     })
     .then( () => {
@@ -77,6 +80,7 @@ function upvoteService($q, $log, $http, authService) {
           Accept: 'application/json'
         }
       };
+      
       return $http.put(url, upvoteData, config);
     })
     .then(res => {
