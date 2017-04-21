@@ -42,7 +42,7 @@
      <create-comment logged-in="recipeItemCtrl.loggedIn" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.showCommentField" on-comment-created="recipeItemCtrl.updateRecipeView()" recipe="recipeItemCtrl.recipe"></create-comment>
      <upload-pic on-pic-uploaded="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></upload-pic>
      <edit-recipe on-edit-recipe="recipeItemCtrl.updateRecipeView()" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" recipe="recipeItemCtrl.recipe"></edit-recipe>
-     <button ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">delete recipe</button>
+     <input class="btn-std commenter-button delete" value="delete" ng-if="recipeItemCtrl.loggedIn && recipeItemCtrl.myRecipe" ng-click="recipeItemCtrl.deleteRecipe()">
 
   <input type="submit" class="btn-std commenter-button" value="recipes" ng-click="recipeItemCtrl.backToTiles()">
   <div class="clearfix">

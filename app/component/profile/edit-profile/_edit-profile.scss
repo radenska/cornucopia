@@ -14,13 +14,27 @@ button {
 }
 
 form {
-  border: solid;
+  border: none;
 }
 
 .edit-profile{
   form{
     h3{
       text-align: center;
+    }
+    fieldset{
+      span{
+
+      }
+      input{
+
+      }
+    }
+    input{
+      line-height: 0;
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
     }
   }
 }
