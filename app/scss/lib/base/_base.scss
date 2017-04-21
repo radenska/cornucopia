@@ -24,7 +24,7 @@ button{
 
 .btn-std {
   font-family: $font-secondary;
-  background-color: $brand-primary;
+  background-color: #BFD8D2;
   color: $white;
   width: 25%;
   padding: 0;
@@ -33,6 +33,11 @@ button{
   border-radius: 5px;
   text-align: center;
   border: none;
+   &:hover {
+      background-color: #DF744A;
+      color: #fff;
+      cursor: pointer;
+      }
 }
 .btn-std:focus{
   outline: 0;

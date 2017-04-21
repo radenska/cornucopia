@@ -4,7 +4,7 @@ header {
   font-family: $font-secondary;
   width: 100%;
   height: 200px;
-  background: #FF9800;
+  background: $brand-primary;
   position: relative;
 
   li {
@@ -31,9 +31,8 @@ header {
   }
 
   li:hover {
-    background-image: url(https://s3-us-west-2.amazonaws.com/cornucopiaapp/logo.svg);
     background: #fff;
-    color: #FF9800;
+    color: #BFD8D2;
   }
 
   li:nth-child(1) {

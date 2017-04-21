@@ -23,7 +23,7 @@
       input[type=submit] {
         height: 40px;
         width:100%;
-        background-color: orange;
+        background-color: #BFD8D2;
         border: none;
         color: white;
         font-size: 15px;
@@ -31,9 +31,8 @@
         margin: 20px 0 20px 0;
 
         &:hover {
-          background-color: white;
-          color: orange;
-          border: 1px solid orange;
+          background-color: #DF744A;
+          color: #fff;
         }
       }
 

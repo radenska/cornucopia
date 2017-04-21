@@ -21,7 +21,7 @@
 
     input[type=submit] {
       height: 40px;
-      background-color: orange;
+      background-color: #BFD8D2;
       border: none;
       color: white;
       font-size: 15px;
@@ -29,9 +29,8 @@
       line-height: 0;
 
       &:hover {
-        background-color: white;
-        color: orange;
-        border: 1px solid orange;
+      background-color: #DF744A;
+      color: #fff;
       }
 
       label {
@@ -129,7 +128,7 @@ form {
     display: block;
     width: 100%;
     margin: 20px 0;
-    background: #41D873;
+    background: #DF744A;
     color: white;
     border: 0;
     padding: 20px;
