@@ -10,8 +10,6 @@ function MyrecipesController($log, $rootScope, $stateParams, profileService, rec
   this.myUserID = $stateParams.userID;
   this.loggedIn = true;
 
-  this.randomArray = [{recipeName: 'one', description: 'two'}, {recipeName: 'three', description: 'four'}];
-
   this.fetchProfile = function() {
     $log.debug('MyrecipesController.fetchProfile()');
 

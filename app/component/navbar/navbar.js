@@ -11,13 +11,6 @@ module.exports = {
 function NavbarController($log, $window, $location, $rootScope, authService) {
   $log.debug('NavbarController');
 
-  // this.hideLoginBtn = false;
-  // this.hideSignupBtn = false;
-  // this.hideLogout = true;
-  // this.hideMyRecipesBtn = true;
-  // this.hideHomeBtn = true;
-
-
   this.goSignUp = function() {
     $log.debug('NavbarController.goSignUp()');
 
@@ -108,7 +101,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
     }
 
     if (path === '/join') {
-      this.hideSignupBtn = true;
+      this.hideSignupBtn = false;
       this.hideLoginBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;
@@ -116,7 +109,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
     }
 
     if (path === '/signin') {
-      this.hideLoginBtn = true;
+      this.hideLoginBtn = false;
       this.hideSignupBtn = false;
       this.hideLogout = true;
       this.hideMyRecipesBtn = true;

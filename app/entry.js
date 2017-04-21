@@ -20,7 +20,6 @@ context.keys().forEach( key => {
   cornucopia.config(context(key));
 });
 
-
 context = require.context('./view/', true, /\.js$/);
 context.keys().forEach( key => {
   let name =  pascalcase(path.basename(key, '.js'));
