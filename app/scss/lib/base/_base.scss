@@ -30,6 +30,7 @@ button{
   outline: 0;
   border-radius: 5px;
   text-align: center;
+  border: none;
 }
 .btn-std:focus{
   outline: 0;
@@ -56,9 +57,13 @@ input{
 input:focus {
     margin-right: $gutterP / 2;
     // outline: 3px solid #555;
-    
+
 }
 .form-validation{
   width:80%;
   display: inline-block;
+}
+
+.clearfix{
+  clear: both;
 }

@@ -1,5 +1,4 @@
 <li class="recipe-item">
-  <h2 class="recipe-name">Name: {{recipeItemCtrl.recipe.recipeName}}</h2>
   <img src="{{recipeItemCtrl.recipe.recipePicURI}}" alt="altimage">
   <div class="description-container">
     <h2 class="recipe-name"> {{recipeItemCtrl.recipe.recipeName}}</h2>
@@ -27,8 +26,13 @@
       <span>{{recipeItemCtrl.recipe.cookTime}}</span>
     </div>
      <on-changes recipeItemCtrl.recipe></on-changes>
-     <div>Recipe posted by {{recipeItemCtrl.profileName}}<div class="profimg"><img src="{{recipeItemCtrl.profilePic}}"></div></div>
-    <div>
+     <div class="posted-by">
+       <div class="profimg">
+         <img src="{{recipeItemCtrl.profilePic}}">
+       </div>
+       <p>Recipe posted by {{recipeItemCtrl.profileName}}</p>
+     </div>
+    <div class="comment-section">
       <h3 ng-hide="recipeItemCtrl.commentArr.length === 0"> Comments</h3>
      <ul>
        <comment-item on-comment-change="recipeItemCtrl.updateRecipeView()" profile="recipeItemCtrl.profile" logged-in="recipeItemCtrl.loggedIn" ng-repeat="comment in recipeItemCtrl.commentArr | orderBy: 'created'" comment="comment"></comment-item>
@@ -42,5 +46,3 @@
 
   <input type="submit" class="btn-std" value="recipes" ng-click="recipeItemCtrl.backToTiles()">
 </li>
-
-
