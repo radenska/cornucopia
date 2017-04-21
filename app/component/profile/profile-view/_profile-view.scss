@@ -1,13 +1,29 @@
 @import "../../../scss/lib/theme/vars";
 
-.profile-view{
-  div{
+h2 {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+h3 {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  font-family: $font-std;
+}
+
+.profile-view img {
+  width: 200px;
+  height: 200px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  
+.profile-view {
+  div {
     position: relative;
-    img{
+    img {
       width: 100%;
-      // margin: 0 5% 0 5%;
     }
-    div{
+    div {
       height: 80px;
       width: 100%;
       // line-height: 140px;
@@ -15,7 +31,7 @@
       position: absolute;
       bottom: 0;
       overflow: hidden;
-      span{
+      span {
         color: white;
         font-size: 125%;
         display: block;
@@ -28,6 +44,7 @@
 }
 
 button {
+  font-family: $font-secondary;
   border: none;
   border-radius: 10%;
   cursor: pointer;

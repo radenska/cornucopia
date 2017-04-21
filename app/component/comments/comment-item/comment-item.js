@@ -16,31 +16,33 @@ module.exports = {
 
 function CommentItemController($log, commentService, profileService){
   $log.debug('CommentItemController');
+
   this.showEditComment = false;
 
   this.deleteComment = function(comment){
-    $log.debug('CommentItemController.deleteComment')
+    $log.debug('CommentItemController.deleteComment');
+
     commentService.deleteComment(comment)
     .then(this.onCommentChange());
   };
 
   this.commenter = function() {
-    $log.debug('CommentItemController.commenter', this.comment.commenterProfileID)
+    $log.debug('CommentItemController.commenter', this.comment.commenterProfileID);
 
     profileService.fetchProfile2(this.comment.commenterProfileID)
     .then(profile => this.commenter = profile);
   };
 
   this.$onInit = function() {
-    $log.debug('CommentItemController.$onInit()')
+    $log.debug('CommentItemController.$onInit()');
+    
     if (this.comment) return this.commenter();
     return this.onCommentChange();
-  }
+  };
 
   this.updateCommentItemView = function() {
     $log.debug('CommentItemController.updateCommentItemView', this.comment);
 
     this.onCommentChange();
   };
-
 }

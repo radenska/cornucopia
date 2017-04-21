@@ -82,7 +82,6 @@ function commentService($q, $log, $window, $http, authService){
   service.fetchRecipeComments = function(recipeData){
     $log.debug('service.fetchRecipeComments');
 
-
     let url = `${__API_URL__}/api/allrecipecomments/${recipeData._id}`;
     let config = {
       headers: {
@@ -153,7 +152,6 @@ function commentService($q, $log, $window, $http, authService){
       return $q.reject(err);
     });
   };
-
 
   return service;
 }

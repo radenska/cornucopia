@@ -1,31 +1,43 @@
-.recipe-item{
+@import "../../../scss/lib/theme/vars";
+
+.recipe-item {
   width: 100%;
+
   .recipe-name{
 
   }
-  img{
+
+  img {
     width: 100%;
-    height: 240px;
+    // max-height: 50%;
     background-size: cover;
   }
+
   .description-container{
     width: 100%;
     height: 240px;
     background: #faf9f5;
     text-align: center;
-    h2{
+
+    h2 {
+      font-family: $font-secondary;
       margin-top: 0;
       padding-top: 10px;
     }
   }
-  .ingredient-section{
+
+  .ingredient-section {
     width: 100%;
-    h2{
+
+    h2 {
+      font-family: $font-secondary;
       font-size: 125%;
-    text-align: center;
+      text-align: center;
     }
-    ul{
-      li{
+
+    ul {
+      li {
+        font-family: $font-std;
         width: 96%;
         color: black;
         border-bottom: dashed 1px #E5E2DB;
@@ -35,12 +47,16 @@
   }
   .direction-section{
     width: 100%;
-    h2{
+
+    h2 {
+      font-family: $font-secondary;
       font-size: 125%;
-    text-align: center;
+      text-align: center;
     }
-    ul{
-      li{
+
+    ul {
+      li {
+        font-family: $font-std;
         width: 96%;
         border-bottom: dashed 1px #E5E2DB;
         padding: 12px 0 12px 12px;
@@ -49,19 +65,19 @@
   }
 }
 
-.time-container{
+.time-container {
   display: inline-block;
   width: 50%;
   height: 100px;
   float: left;
   padding: 10px 0 10px 0;
   // position: relative;
-  h3{
+  h3 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  span{
+  span {
     color: #FF9800;
     font-size: 150%;
     width: 100%;
@@ -82,11 +98,11 @@
     display: inline-block;
     width: 15%;
     margin-top: 0;
-    img{
+    img {
 
     }
   }
-  p{
+  p {
     float: left;
     display: inline-block;
     width: 85%;
@@ -95,12 +111,13 @@
   }
 }
 
-.comment-section{
+.comment-section {
   clear: both;
   padding-top: 10px;
-  h3{
+
+  h3 {
+    font-family: $font-secondary;
     margin: 0;
     padding-bottom: 10px;
   }
-
 }

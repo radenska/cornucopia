@@ -26,12 +26,14 @@ function profileService($q, $log, $http, authService) {
     })
     .then( res => {
       $log.log('profile created');
+
       let profile = res.data;
       service.profiles.unshift(profile);
       return profile;
     })
     .catch( err => {
       $log.error(err.message);
+
       return $q.reject(err);
     });
   };
@@ -49,11 +51,13 @@ function profileService($q, $log, $http, authService) {
     return $http.get(url, config)
     .then( res => {
       $log.log('Profile Retrieved', res);
+
       service.profile = res.data;
       return service.profile;
     })
     .catch( err => {
       $log.error(err.message);
+
       return $q.reject(err);
     });
   };
@@ -71,11 +75,13 @@ function profileService($q, $log, $http, authService) {
     return $http.get(url, config)
     .then( res => {
       $log.log('Profile Retrieved', res);
+
       service.profile = res.data;
       return service.profile;
     })
     .catch( err => {
       $log.error(err.message);
+
       return $q.reject(err);
     });
   };
@@ -93,6 +99,7 @@ function profileService($q, $log, $http, authService) {
     return $http.get(url, config)
     .then( res => {
       $log.log('All profiles retrieved.');
+
       service.profiles = res.data;
       return service.profiles;
     })
@@ -120,11 +127,13 @@ function profileService($q, $log, $http, authService) {
     })
     .then( res => {
       $log.log('Profile edited successfully.');
+
       service.profile = res.data;
       return service.profile;
     })
     .catch( err => {
       $log.error(err.message);
+
       return $q.reject(err);
     });
   };
@@ -145,13 +154,16 @@ function profileService($q, $log, $http, authService) {
     })
     .then( res => {
       $log.log('Profile deleted.');
+
       service.profile = res.data;
       return service.profile;
     })
     .catch( err => {
       $log.error(err.message);
+
       return $q.reject(err);
     });
   };
+  
   return service;
-};
+}

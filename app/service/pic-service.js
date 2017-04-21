@@ -104,7 +104,6 @@ function picService($q, $log, $http, Upload, authService) {
     })
     .then( res => {
       $log.log('Recipe pic deleted.');
-
     })
     .catch( err => {
       $log.error(err.message);
@@ -113,4 +112,4 @@ function picService($q, $log, $http, Upload, authService) {
   };
 
   return service;
-};
+}

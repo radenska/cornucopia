@@ -1,5 +1,7 @@
 <section class="profile-view">
   <div ng-if="!profileViewCtrl.showEditView">
+
+    <h3>{{profileViewCtrl.profile.name}}</h3><br>
     <img ng-src="{{profileViewCtrl.profile.profilePicURI}}">
     <div>
       <span>Username: {{profileViewCtrl.profile.name}}</span>

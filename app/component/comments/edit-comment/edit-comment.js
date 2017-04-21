@@ -21,6 +21,7 @@ function EditCommentController($log, commentService){
     let commentData = {
       comment: this.commentUpdate
     };
+    
     commentService.updateComment(this.comment._id, commentData)
     .then( () => this.onCommentEdited());
   };

@@ -17,6 +17,6 @@ function LoginController($log, $location, authService, profileService) {
     .catch( () => {
       this.showLoginError = true;
       this.user = null;
-    })
+    });
   };
 }

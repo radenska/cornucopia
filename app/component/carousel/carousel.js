@@ -15,9 +15,6 @@ function CarouselController($log){
   this.nowrap = false;
   this.active = 0;
 
-  // let currentIndex = 0;
-
-
   let img1 = {
     image: 'https://placehold.it/1000x300/0000ff'
   };
@@ -31,5 +28,4 @@ function CarouselController($log){
   };
 
   this.slides = [img1, img2, img3];
-
 }

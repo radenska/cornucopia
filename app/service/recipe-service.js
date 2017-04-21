@@ -20,6 +20,7 @@ function recipeService($q, $log, $http, $window, authService) {
           Authorization: `Bearer ${token}`
         }
       };
+
       return $http.post(url, recipe, config);
     })
     .then( res => {
@@ -28,14 +29,12 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .catch( err => {
       $log.error('FAILED', err.message);
-
       return $q.reject(err);
     });
   };
 
   service.fetchRecipe = function(recipeID) {
     $log.debug('recipeService.fetchMyRecipes()');
-
 
     let url = `${__API_URL__}/api/recipe/${recipeID}`;
     let config = {
@@ -73,6 +72,7 @@ function recipeService($q, $log, $http, $window, authService) {
     })
     .catch( err => {
       $log.error('failed to retrieve recipes', err.message);
+
       return $q.reject(err);
     });
   };
@@ -118,11 +118,6 @@ function recipeService($q, $log, $http, $window, authService) {
     .then( res => {
       $log.log('recipes updated');
       return res.data;
-      // for (let i = 0; i < service.recipes.length; i++) {
-      //   let current = service.recipes[i];
-      //   if (current._id === recipeID) {
-      //     current = res.data;
-          // break;
     })
     .catch( err => {
       $log.error(err.message);
@@ -155,4 +150,4 @@ function recipeService($q, $log, $http, $window, authService) {
   };
 
   return service;
-};
+}
