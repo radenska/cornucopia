@@ -1,5 +1,7 @@
 'use strict';
 
+require('./_create-comment.scss')
+
 module.exports = {
   template: require('./create-comment.html'),
   controller: ['$log', 'commentService', CreateCommentController],
