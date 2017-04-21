@@ -1,5 +1,5 @@
 <section class="pub-recipe">
-  <input ng-model="pubRecipeCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
+  <input class="search-bar" ng-model="pubRecipeCtrl.recipeSearchTerm" type="text" placeholder="search recipes">
   <ul>
     <recipe-tile ng-repeat="instance in pubRecipeCtrl.allRecipes | recipeSearch: pubRecipeCtrl.recipeSearchTerm | orderBy: '-created' | limitTo: 10"
                  recipe="instance">
