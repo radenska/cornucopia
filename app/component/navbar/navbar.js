@@ -32,6 +32,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
 
   this.goHome = function() {
     $log.debug('NavbarController.goHome()');
+
     $location.url('/');
   };
 
@@ -44,6 +45,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
 
   this.logout = () => {
     $log.debug('NavbarController.logout()');
+
     authService.logout()
     .then( () => {
       $location.url('/');
@@ -96,8 +98,7 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
         this.hideLogout = true;
         this.hideMyRecipesBtn = true;
         this.hideHomeBtn = true;
-      })
-
+      });
     }
 
     if (path === '/join') {
@@ -115,7 +116,6 @@ function NavbarController($log, $window, $location, $rootScope, authService) {
       this.hideMyRecipesBtn = true;
       this.hideHomeBtn = true;
     }
-
   };
 
   this.checkPath();

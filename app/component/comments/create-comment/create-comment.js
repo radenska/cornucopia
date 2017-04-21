@@ -18,6 +18,7 @@ function CreateCommentController($log, commentService){
     let commentData = {
       comment: this.comment
     };
+    
     commentService.createComment(this.recipe, commentData)
     .then( () => {
       this.onCommentCreated();

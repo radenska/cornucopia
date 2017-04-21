@@ -10,10 +10,10 @@
     background-color: orange;
     border: none;
     border-radius: 5%;
+
     &.first {
       margin-left: 55%;
     }
-
 
     &:hover {
       background-color: white;
@@ -33,15 +33,18 @@
   border: 1px solid black;
   display: inline-block;
 }
+
 .commenter-name{
   padding-left: 10px;
   display: inline-block;
 }
+
 .commenter-button{
   width: 40%;
   margin: 10px 5% 10px 5%;
   float: left;
 }
+
 .posted-by{
   margin-top: 10px;
   display: block;

@@ -9,7 +9,6 @@ function authService($q, $log, $http, $window) {
   let token = null;
 
   function setToken(_token) {
-    $log.log(_token);
     $log.debug('setToken');
 
     if(!_token) return $q.reject(new Error('no token'));
@@ -25,9 +24,9 @@ function authService($q, $log, $http, $window) {
     if(token){
       return $q.resolve(token);
     }
-    // if still confused log dif between different token grabs
+
     token = $window.localStorage.getItem('token');
-    if (token) return $q.resolve(token)
+    if (token) return $q.resolve(token);
     return $q.reject(new Error('token not found'));
   };
 

@@ -1,8 +1,6 @@
 <section ng-hide="hideEditForm">
   <form name="editComment" ng-submit="editCommentCtrl.editComment()" novalidate>
-
     <textarea name="editCommentarea" cols="30" rows="10" ng-model="editCommentCtrl.commentUpdate"></textarea>
-
     <input type="submit" class="btn-std" ng-click="hideEditForm = true">
     <on-changes editCommentCtrl.comment></on-changes>
   </form>
