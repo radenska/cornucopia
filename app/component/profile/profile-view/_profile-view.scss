@@ -17,27 +17,28 @@ h3 {
   margin-left: 2.5%;
   margin-right: 2.5%;
   
-.profile-view {
-  div {
-    position: relative;
-    img {
-      width: 100%;
-    }
+  .profile-view {
     div {
-      height: 80px;
-      width: 100%;
-      // line-height: 140px;
-      background: rgba(0,0,0, 0.4);
-      position: absolute;
-      bottom: 0;
-      overflow: hidden;
-      span {
-        color: white;
-        font-size: 125%;
-        display: block;
-        height: 30px;
-        line-height: 50px;
-        padding-left: 10px;
+      position: relative;
+      img {
+        width: 100%;
+      }
+      div {
+        height: 80px;
+        width: 100%;
+        // line-height: 140px;
+        background: rgba(0,0,0, 0.4);
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        span {
+          color: white;
+          font-size: 125%;
+          display: block;
+          height: 30px;
+          line-height: 50px;
+          padding-left: 10px;
+        }
       }
     }
   }
