@@ -4,9 +4,10 @@
     <div>
       <span>Username: {{profileViewCtrl.profile.name}}</span>
       <span>Recipes created: {{profileViewCtrl.profile.recipes.length}}</span>
-    <div>
+    </div>
 
   </div>
   <input class="btn-std commenter-button" value="edit profie" type="submit" id="edit-button" ng-if="!profileViewCtrl.showEditView" ng-click="profileViewCtrl.showEditView = true">
-  <edit-profile ng-if="profileViewCtrl.showEditView" on-profile-updated="profileViewCtrl.updateProfileView()" profile="profileViewCtrl.profile"></edit-profile>
+  <edit-profile ng-if="profileViewCtrl.showEditView" on-profile-updated="profileViewCtrl.updateProfileView()" profile="profileViewCtrl.profile"></edit-profile>    
+  </div>
 </section>
