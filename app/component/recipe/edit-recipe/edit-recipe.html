@@ -1,5 +1,5 @@
 <section ng-init="showEditBtn = true" class="edit-recipe">
-  <input class="btn-std" value="edit recipe" type="submit" ng-show="showEditBtn" ng-click="showEditBtn = false">
+  <input class="btn-std commenter-button" value="edit recipe" type="submit" ng-show="showEditBtn" ng-click="showEditBtn = false">
   <div ng-show="!showEditBtn" class="add-recipe">
     <form class="add-recipe-form"
           ng-submit="editRecipeCtrl.updateRecipe()"
