@@ -1,8 +1,21 @@
 @import "../../../scss/lib/theme/vars";
 
+h2 {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+h3 {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  font-family: $font-std;
+}
+
 .profile-view img {
   width: 200px;
   height: 200px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 
 button {
