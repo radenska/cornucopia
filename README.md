@@ -5,4 +5,4 @@
 
 A community for sharing recipes.
 
-[Checkout it out here.](https://cornucopia-fe.herokuapp.com/)
+[Check it out here.](https://cornucopia-fe.herokuapp.com/)
