@@ -1,4 +1,7 @@
+ @import "../../scss/lib/theme/vars";
+
 .search-bar {
+  font-family: $font-secondary;
   width: 100%;
   display: block;
   height: 40px;

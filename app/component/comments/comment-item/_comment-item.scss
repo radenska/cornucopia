@@ -1,4 +1,8 @@
+@import "../../../scss/lib/theme/vars";
+
+
 .commentItem {
+  font-family: $font-std;
   margin-left: 5%;
   background-color: white;
   width: 80%;

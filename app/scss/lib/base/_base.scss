@@ -17,11 +17,13 @@ h2{
 }
 
 button{
+  font-family: $font-secondary;
   background-color: $brand-primary;
   color: $white;
 }
 
 .btn-std {
+  font-family: $font-secondary;
   background-color: $brand-primary;
   color: $white;
   width: 25%;
